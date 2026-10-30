@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>إشراق - المطوف الرقمي</title>
+    <!-- Bootstrap 5.3.3 RTL CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <!-- Google Fonts (Tajawal) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="manifest" href="./manifest.json" />
+    <meta name="theme-color" content="#21211D" />
+    <style>
+      .step-indicator {
+        opacity: 0.4;
+        transition: all 0.3s ease;
+        color: #fff;
+      }
+      .step-indicator.active {
+        opacity: 1;
+        color: #edcea0;
+        font-weight: bold;
+      }
+      .step-indicator.completed {
+        opacity: 0.8;
+        color: #2ecc71;
+      }
+      .badge-num {
+        width: 28px;
+        height: 28px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(33, 33, 29, 0.9);
+        border: 1px solid rgba(237, 206, 160, 0.4);
+        border-radius: 50%;
+        font-size: 0.85rem;
+      }
+      .step-indicator.active .badge-num {
+        background: #edcea0;
+        color: #21211d;
+        border-color: #edcea0;
+        box-shadow: 0 0 10px rgba(237, 206, 160, 0.4);
+      }
+      .step-line {
+        flex-grow: 1;
+        height: 1px;
+        background: rgba(237, 206, 160, 0.2);
+        margin: 0 5px;
+      }
+      .gold {
+        color: #edcea0 !important;
+      }
+      .btn-gold-solid {
+        background-color: #edcea0;
+        color: #21211d;
+        border: none;
+      }
+      .btn-gold-solid:hover {
+        background-color: #d8b88a;
+        color: #21211d;
+      }
+      .supplication-box {
+        background: rgba(0, 0, 0, 0.25);
+        border: 1px solid rgba(237, 206, 160, 0.2);
+      }
+      .mode-btn {
+        background: transparent;
+        border: 1px solid #edcea0;
+        color: #edcea0;
+        transition: 0.3s;
+      }
+      .mode-btn.active,
+      .mode-btn:hover {
+        background: #edcea0;
+        color: #21211d;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav
+        class="navbar navbar-expand-lg fixed-top shadow-sm"
+        style="background-color: #21211d; border-bottom: 0.2rem solid #edcea0"
+      >
+        <div class="container-fluid">
+          <a class="navbar-brand ms-lg-3" href="./index.html">
+            <img
+              src="./5b862b4281f64fd884b11984846f0e97.png"
+              width="80"
+              alt="إشراق"
+            />
+          </a>
+          <div class="h6 gold text-center d-none d-lg-block my-auto">
+            نُشرِقُ برُوحِك.. ونَسْمُو بِقَلْبِك
+          </div>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapsibleNavId"
+            style="border-color: #edcea0"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link gold px-3" href="./index.html">الرئيسية</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link gold px-3" href="./quran.html"
+                  >القرآن الكريم</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link gold px-3" href="./azkar.html">الأذكار</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link gold px-3" href="./adiya.html">الأدعية</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link gold px-3 active" href="./matwaf.html"
+                  >المطوف</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main style="margin-top: 130px" class="pb-5 mb-5">
+      <div class="container my-3" style="max-width: 600px">
+        <!-- أزرار اختيار النسك (عمرة / حج) + أزرار تحكم الخط -->
+        <div
+          class="d-flex justify-content-between align-items-center mb-3 px-1"
+        >
+          <div class="btn-group" role="group">
+            <button
+              type="button"
+              id="btn-mode-umrah"
+              class="btn btn-sm mode-btn active rounded-start-pill px-3"
+              onclick="switchRitualMode('umrah')"
+            >
+              عمرة
+            </button>
+            <button
+              type="button"
+              id="btn-mode-hajj"
+              class="btn btn-sm mode-btn rounded-end-pill px-3"
+              onclick="switchRitualMode('hajj')"
+            >
+              حج
+            </button>
+          </div>
+          <div class="d-flex align-items-center gap-1">
+            <button
+              class="btn btn-sm btn-gold-solid px-2 me-1"
+              onclick="adjustFontSize(1)"
+              title="تكبير الخط"
+            >
+              <i class="bi bi-zoom-in"></i>
+            </button>
+            <button
+              class="btn btn-sm btn-gold-solid px-2 me-1"
+              onclick="adjustFontSize(-1)"
+              title="تصغير الخط"
+            >
+              <i class="bi bi-zoom-out"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="row justify-content-center mb-5" id="mutawwif-section">
+          <div class="col-12">
+            <div
+              class="mutawwif-card shadow-lg p-4 rounded-4 position-relative overflow-hidden border border-gold-subtle"
+            >
+              <!-- شريط المراحل الديناميكي -->
+              <div
+                id="steps-container"
+                class="d-flex justify-content-between align-items-center mb-4 px-2 overflow-x-auto pb-2"
+              >
+                <!-- يُعبأ عبر الجافاسكريبت حسب النسك -->
+              </div>
+
+              <!-- محتوى المراحل -->
+              <div id="mutawwif-stage-content"></div>
+
+              <!-- أزرار التنقل -->
+              <div
+                class="d-flex justify-content-between align-items-center mt-4 pt-3 border-top border-gold-subtle"
+              >
+                <button
+                  onclick="prevStage()"
+                  id="btn-prev-stage"
+                  class="btn btn-outline-light btn-sm rounded-pill px-3 d-none"
+                >
+                  <i class="bi bi-chevron-right me-1"></i> المرحلة السابقة
+                </button>
+                <span
+                  id="stage-counter-text"
+                  class="small text-muted font-monospace ms-auto"
+                  >المرحلة 1</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- سجل الإنجازات (عُمَراتي / حَجّاتي) -->
+        <div
+          class="card border border-gold-subtle p-3 rounded-4 shadow-sm mt-4"
+          style="background-color: #1b1b18"
+        >
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <h6 class="gold mb-0">
+              <i class="bi bi-journal-check me-2"></i> أرشيف الإنجازات (عُمَراتي
+              وحَجّاتي)
+            </h6>
+            <button
+              class="btn btn-sm btn-outline-danger py-1 px-2"
+              onclick="clearHistory()"
+            >
+              <i class="bi bi-trash"></i>
+            </button>
+          </div>
+          <ul
+            id="history-list"
+            class="list-unstyled small text-light opacity-85 mb-0"
+          >
+            <li class="text-muted">لا توجد إنجازات مسجلة بعد.</li>
+          </ul>
+        </div>
+      </div>
+    </main>
+
+    <!-- نافذة منسدلة للأدعية الإضافية -->
+    <div class="modal fade" id="extraAdiyaModal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border border-gold text-light"
+        style="background-color: #1b1b18">
+          <div class="modal-header border-bottom border-secondary">
+            <h5 class="modal-title gold">أدعية مستحبة إضافية</h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p class="mb-0 h3">
+              <strong>نية الطواف حول الكعبة</strong> «اللهم إني أريد طواف بيتك
+              الحرام سبعة أشواط طواف العمرة , اللهم فيسّره لي وتقبّله مني »
+            </p>
+            <hr class="border-secondary" />
+            <p class="mb-2 h3">
+              <strong>عند الحجر الأسود:</strong> «بسم الله والله أكبر -ثلاثاً- ،
+              اللهم إيماناً بك وتصديقاً بكتابك ووفاءً بعهدك واتباعاً لسنة نبيك
+              محمد صلى الله عليه وسلم .»
+            </p>
+            <hr class="border-secondary" />
+            <p class="mb-2 h3">
+              <strong>بين الركن اليماني والحجر الأسود:</strong> «رَبَّنَا آتِنَا
+              فِي الدُّنْيَا حَسَنَةً وَفِي الآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ
+              النَّارِ» وأدخلنا الجنة مع الأبرار برحمتك يا عزيز ويا غفار .
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="extraAdiyaMOdal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border border-gold text-light"
+        style="background-color: #1b1b18">
+          <div class="modal-header border-bottom border-secondary">
+            <h5 class="modal-title gold">أدعية مستحبة إضافية</h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p class="mb-2 h3">
+              <strong> نية السعي بين الصفا والمروة: </strong> «اللهم إني أريد أن
+              أسعى بين الصفا والمروة سبعة أشواط سعي العمرة . بسم الله والله أكبر
+              »
+            </p>
+            <hr class="border-secondary" />
+            <p class="mb-2 h3">
+              <strong>دعاء الميلين الأخضرين :</strong> نهرول ونقول : «ربّ اغفر
+              وارحم واعف وتكرم وتجاوز عما تعلم إنك تعلم ما لا نعلم إنك أنت الأعز
+              الأكرم» ونكررها
+            </p>
+            <!-- <hr class="border-secondary" /> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="extraAdiyaMODal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border border-gold text-light"
+        style="background-color: #1b1b18">
+          <div class="modal-header border-bottom border-secondary">
+            <h5 class="modal-title gold">
+              دعاء مقام سيدنا ابراهيم عليه السلام
+            </h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p class="mb-2 h3">
+              <strong> </strong> «اللهم يَسِّر لي اليسرى وجنبني العسرى واغفر لي
+              في الآخرة والأولى، واعصمني بألطافك حتى لا أعصيك، وأعني على طاعتك
+              بتوفيقك وجنبني معاصيك، واجعلني ممن يحبك ويحب ملائكتك ورسلك ويحب
+              عبادك الصالحين، اللهم فكما هديتني إلى الإسلام فثبتني عليه بألطافك
+              وولايتك حتى ألقاك، واستعملني لطاعتك وطاعة رسولك، وأجرني من
+              مُضِلَّات الفتن، اللهم لا تدع لنا في مقامنا هذا ذنباً إلا غفرته
+              ولا هَمّاً إلا فَرَّجْتَه ولا حاجة إلا قضيتها ويسرتها، فيسر يا رب
+              أمورنا واشرح صدورنا ونَوِّر قلوبنا واختم بالصالحات أعمالنا يا رب
+              البيت العتيق أعتق رقابنا ورقاب والدينا من النار وأعذنا من كل سوء
+              وقَنِّعنا بما رزقتنا وبارك لنا فيما آتيتنا، إلهي عبدك بفنائك يرجو
+              عفوك ومغفرتك، اللهم إني عبدك وابن عبدك وابن أمتك أتيتك بذنوب كثيرة
+              وخطايا جَمَّة وأعمال سيئة وهذا مقام العائذ بك من النار فاغفر لي
+              ولوالدي إنك أنت الغفور الرحيم.»
+            </p>
+            <!-- <hr class="border-secondary" /> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="extraAdiyaMODAl" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border border-gold text-light"
+        style="background-color: #1b1b18">
+          <div class="modal-header border-bottom border-secondary">
+            <h5 class="modal-title gold">دعاء الشرب من ماء زمزم</h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p class="mb-2 h3">
+              <strong> </strong> «اللهم إني أسألك علماً نافعاً وقلباً خاشعاً
+              ورزقاً واسعاً ولساناً ذاكراً ونوراً ساطعاً وحياة طيبة وشِفاءً من
+              كل داء وسقم، ربِّ اشرح لي صدري ويسر لي أمري واحيني على الإيمان
+              وثبتني بالقرآن وَجَمِّلْني بالعافية وتوفني مسلماً وألحقني
+              بالصالحين.»
+            </p>
+            <!-- <hr class="border-secondary" /> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="extraAdiyaMODAL" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border border-gold text-light"
+        style="background-color: #1b1b18">
+          <div class="modal-header border-bottom border-secondary">
+            <h5 class="modal-title gold">صيغة التلبية</h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p class="mb-2 h3">
+              <strong> </strong> «لبيك اللهم لبيك، لبيك لا شريك لك لبيك، إن
+              الحمد والنعمة لك والملك، لا شريك لك. لبيك وسعديك، والخير كله بيديك
+              والرغباء إليك، لبيك بعمرة حقاً، لبيك تعبداً ورقاً، لبيك إن العيش
+              عيش الآخرة. اللهم صلِّ على سيدنا محمد وعلى آل سيدنا محمد، وأسألك
+              رضوانك والجنة، وأعوذ برحمتك من النار.»
+            </p>
+            <!-- <hr class="border-secondary" /> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="extraAdiyaMODALL" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border border-gold text-light"
+        style="background-color: #1b1b18">
+          <div class="modal-header border-bottom border-secondary">
+            <h5 class="modal-title gold">أدعية مستحبة</h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <p class="mb-2 h3">
+              <strong> </strong> «اللهم قد أحرم لك لحمي وشعري ودمي وعصبي ومخي
+              وعظامي، وحَرَّمتُ على نفسي الطيب والمخيط والنساء ابتغاء وجهك
+              والدار الآخرة، فتقبل مني يا كريم. لبيك اللهم لبيك، لبيك لا شريك لك
+              لبيك.»
+            </p>
+            <!-- <hr class="border-secondary" /> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <nav
+      class="bottom-nav fixed-bottom d-md-none"
+      style="
+        background-color: #151512;
+        border-top: 1px solid rgba(237, 206, 160, 0.2);
+      "
+    >
+      <div
+        class="container d-flex justify-content-around align-items-center py-2"
+      >
+        <a
+          href="index.html"
+          class="nav-item-bottom text-center text-decoration-none text-muted"
+          data-page="home"
+        >
+          <i class="bi bi-house-door fs-5 d-block"></i>
+          <span class="small">الرئيسية</span>
+        </a>
+        <a
+          href="tasbeeh.html"
+          class="nav-item-bottom text-center text-decoration-none text-muted"
+          data-page="tasbeeh"
+        >
+          <i class="bi bi-circle fs-5 d-block"></i>
+          <span class="small">السبحة</span>
+        </a>
+        <a
+          href="qibla.html"
+          class="nav-item-bottom text-center text-decoration-none text-muted"
+          data-page="qibla"
+          style="color: #edcea0"
+        >
+          <i class="bi bi-compass-fill fs-5 d-block"></i>
+          <span class="small">القبلة</span>
+        </a>
+        <a
+          href="matwaf.html"
+          class="nav-item-bottom text-center text-decoration-none active"
+          data-page="matwaf"
+        >
+          <i class="bi bi-person-walking fs-5 d-block active-icon"></i>
+          <span class="small">المطوف</span>
+        </a>
+        <a
+          href="settings.html"
+          class="nav-item-bottom text-center text-decoration-none text-muted"
+          data-page="settings"
+        >
+          <i class="bi bi-gear fs-5 d-block"></i>
+          <span class="small">الإعدادات</span>
+        </a>
+      </div>
+    </nav>
+
+    <script src="./matwaf.js"></script>
+    <script src="./main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

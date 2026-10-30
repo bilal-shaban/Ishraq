@@ -1,0 +1,541 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>إشراق - الإعدادات</title>
+    <!-- Bootstrap 5.3.3 RTL CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <!-- Google Fonts (Tajawal) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- ملف التصميم الرئيسي -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="./manifest.json" />
+    <meta name="theme-color" content="#21211D" />
+  </head>
+  <body
+    style="
+      background-color: #1a1a16;
+      color: #f8f9fa;
+      font-family: &quot;Tajawal&quot;, sans-serif;
+    "
+  >
+    <!-- شريط التنقل العلوي (الناف بار الكامل) -->
+    <header>
+      <nav
+        class="navbar navbar-expand-lg fixed-top shadow-sm"
+        style="background-color: #21211d; border-bottom: 0.2rem solid #edcea0"
+      >
+        <div class="container-fluid">
+          <a class="navbar-brand ms-lg-3" href="./index.html">
+            <img
+              src="./5b862b4281f64fd884b11984846f0e97.png"
+              width="80"
+              alt="إشراق"
+            />
+          </a>
+          <div
+            class="h6 gold text-center d-none d-lg-block my-auto"
+            style="color: #edcea0"
+          >
+            نُشرِقُ برُوحِك.. ونَسْمُو بِقَلْبِك
+          </div>
+
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapsibleNavId"
+            aria-controls="collapsibleNavId"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            style="border-color: #edcea0"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a
+                  class="nav-link px-3 d-inline-block"
+                  style="color: #edcea0"
+                  href="./index.html"
+                  >الرئيسية</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link px-3 d-inline-block"
+                  style="color: #edcea0"
+                  href="./quran.html"
+                  >القرآن الكريم</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link px-3 d-inline-block"
+                  style="color: #edcea0"
+                  href="./hadith.html"
+                  >الحديث النبوي</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link px-3 d-inline-block"
+                  style="color: #edcea0"
+                  href="./azkar.html"
+                  >الأذكار</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link px-3 d-inline-block"
+                  style="color: #edcea0"
+                  href="./awrad.html"
+                  >الأوراد</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link px-3 d-inline-block"
+                  style="color: #edcea0"
+                  href="./adiya.html"
+                  >الأدعية</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link px-3 d-inline-block"
+                  style="color: #edcea0"
+                  href="./tasbeeh.html"
+                  >السبحة</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link px-3 d-inline-block"
+                  style="color: #edcea0"
+                  href="./matwaf.html"
+                  >المطوف</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- محتوى الصفحة مع مسافة علوية وسفلية -->
+    <main style="margin-top: 130px" class="pb-5 mb-5" id="wn">
+      <div class="container my-3" style="max-width: 600px">
+        <!-- عنوان الصفحة -->
+        <div class="text-center mb-4">
+          <h2 class="fw-bold" style="color: #edcea0">
+            <i class="bi bi-gear-fill me-2"></i>إعدادات التطبيق
+          </h2>
+          <p class="text-light opacity-75 small">
+            تخصيص تفضيلات التطبيق والإشعارات حسب رغبتك
+          </p>
+        </div>
+
+        <!-- بطاقة "ما الجديد" الفخمة -->
+        <div class="whats-new-card mb-4" data-bs-toggle="modal" data-bs-target="#whatsNewModal" >
+          <div class="whats-new-glow"></div>
+          <div class="d-flex align-items-center justify-content-between position-relative">
+            <div>
+              <span class="whats-new-version">V1.0</span>
+              <div class="whats-new-title mt-2"><i class="bi bi-gift-fill me-2"></i>ما الجديد في إشراق</div>
+              <div class="whats-new-sub">تصفّح كل ما يقدمه لك التطبيق من ميزات</div>
+            </div>
+            <i class="bi bi-chevron-left whats-new-arrow"></i>
+          </div>
+        </div>
+
+        <!-- ============== قسم العبادة والإشعارات ============== -->
+        <div class="settings-section-title"><i class="bi bi-bell-fill"></i> العبادة والإشعارات</div>
+        <div class="settings-card">
+          <div class="settings-row d-flex justify-content-between align-items-center">
+            <div>
+              <div class="settings-row-title">تنبيهات أوقات الصلاة</div>
+              <div class="settings-row-desc">إشعار فوري عند دخول وقت أي صلاة، بأي صفحة بالتطبيق.</div>
+            </div>
+            <div class="form-check form-switch fs-4">
+              <input class="form-check-input shadow-none" type="checkbox" role="switch" id="prayerNotificationsToggle" onchange="togglePrayerNotifications(this)">
+            </div>
+          </div>
+
+          <div class="settings-row d-flex justify-content-between align-items-center">
+            <div>
+              <div class="settings-row-title">تذكير السبحة المسائي</div>
+              <div class="settings-row-desc">تنبيه لطيف الساعة 8 مساءً لو ما سبّحت شيء طول اليوم.</div>
+            </div>
+            <div class="form-check form-switch fs-4">
+              <input class="form-check-input shadow-none" type="checkbox" role="switch" id="tasbeehReminderToggle" onchange="toggleTasbeehReminder(this)">
+            </div>
+          </div>
+
+          <div class="settings-row d-flex justify-content-between align-items-center">
+            <div>
+              <div class="settings-row-title">تذكير الجمعة الأسبوعي</div>
+              <div class="settings-row-desc">تنبيه كل جمعة بقراءة الكهف والإكثار من الصلاة على النبي ﷺ.</div>
+            </div>
+            <div class="form-check form-switch fs-4">
+              <input class="form-check-input shadow-none" type="checkbox" role="switch" id="fridayReminderToggle" onchange="toggleFridayReminder(this)">
+            </div>
+          </div>
+
+          <div class="settings-row">
+            <div class="settings-row-title mb-2">طريقة حساب مواقيت الصلاة</div>
+            <select id="prayerMethodSelect" class="form-select settings-select form-select-sm" onchange="setPrayerMethod(this.value)">
+              <option value="5">الهيئة المصرية العامة للمساحة</option>
+              <option value="4">أم القرى - مكة المكرمة</option>
+              <option value="3">رابطة العالم الإسلامي</option>
+              <option value="2">ISNA - أمريكا الشمالية</option>
+              <option value="1">جامعة العلوم الإسلامية - كراتشي</option>
+              <option value="8">الإمارات العربية المتحدة</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- ============== قسم القراءة والعرض ============== -->
+        <div class="settings-section-title"><i class="bi bi-book-half"></i> القراءة والعرض</div>
+        <div class="settings-card">
+          <div class="settings-row d-flex justify-content-between align-items-center">
+            <div>
+              <div class="settings-row-title">وضع القراءة الليلية</div>
+              <div class="settings-row-desc">تخفيف الإضاءة وتلطيف التباين لراحة العين ليلاً.</div>
+            </div>
+            <div class="form-check form-switch fs-4">
+              <input class="form-check-input shadow-none" type="checkbox" role="switch" id="nightModeToggle" onchange="toggleNightReadingMode(this)">
+            </div>
+          </div>
+
+          <div class="settings-row">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <div class="settings-row-title mb-0">حجم الخط العام</div>
+              <span id="fontSizeValueLabel" class="gold small">100%</span>
+            </div>
+            <div class="settings-row-desc mb-2">يُطبَّق على القرآن والأذكار والأوراد والأدعية.</div>
+            <input type="range" id="globalFontSizeSlider" class="form-range" min="1.1" max="2.4" step="0.1" oninput="setGlobalFontSize(this.value)">
+          </div>
+
+          <div class="settings-row d-flex justify-content-between align-items-center">
+            <div>
+              <div class="settings-row-title">الرسم العثماني</div>
+              <div class="settings-row-desc">استخدام خط "Amiri Quran" بدل الخط العادي بصفحة قراءة السور، والأذكار، والأوراد، والأدعية.</div>
+            </div>
+            <div class="form-check form-switch fs-4">
+              <input class="form-check-input shadow-none" type="checkbox" role="switch" id="fontFamilyToggle" onchange="toggleDefaultFontFamily(this)">
+            </div>
+          </div>
+
+          <div class="settings-row">
+            <div class="settings-row-title mb-2">القارئ الافتراضي</div>
+            <select id="reciterSelect" class="form-select settings-select form-select-sm" onchange="setDefaultReciter(this.value)">
+              <option value="afs">مشاري العفاسي</option>
+              <option value="maher">ماهر المعيقلي</option>
+              <option value="sds">عبدالرحمن السديس</option>
+              <option value="yasser">ياسر الدوسري</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- ============== قسم السبحة ============== -->
+        <div class="settings-section-title"><i class="bi bi-circle"></i> السبحة</div>
+        <div class="settings-card">
+          <div class="settings-row">
+            <div class="settings-row-title mb-2">صوت النقر الافتراضي</div>
+            <div class="d-flex gap-2 sound-picker" id="settingsSoundPicker">
+              <button class="btn btn-sm btn-gold-outline" data-sound="silent" onclick="setDefaultTasbeehSound('silent')"><i class="bi bi-volume-mute"></i> صامت</button>
+              <button class="btn btn-sm btn-gold-outline" data-sound="wood" onclick="setDefaultTasbeehSound('wood')"><i class="bi bi-circle-fill"></i> خشبي</button>
+              <button class="btn btn-sm btn-gold-outline" data-sound="metal" onclick="setDefaultTasbeehSound('metal')"><i class="bi bi-gem"></i> معدني</button>
+            </div>
+          </div>
+          <div class="settings-row">
+            <div class="settings-row-title mb-2">الهدف اليومي</div>
+            <div class="input-group input-group-sm">
+              <input type="number" id="tasbeehGoalInput" class="form-control settings-select" min="10" step="10" onchange="setDefaultTasbeehGoal(this.value)">
+              <span class="input-group-text settings-select">تسبيحة/يوم</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============== قسم البيانات والنسخ الاحتياطي ============== -->
+        <div class="settings-section-title"><i class="bi bi-hdd-fill"></i> البيانات والنسخ الاحتياطي</div>
+        <div class="settings-card">
+          <div class="settings-row d-flex justify-content-between align-items-center">
+            <div>
+              <div class="settings-row-title">تصدير نسخة احتياطية</div>
+              <div class="settings-row-desc">احفظ كل بياناتك وإعداداتك كملف يمكنك استعادته لاحقاً.</div>
+            </div>
+            <button onclick="exportBackup()" class="btn btn-gold-outline btn-sm"><i class="bi bi-download"></i></button>
+          </div>
+          <div class="settings-row d-flex justify-content-between align-items-center">
+            <div>
+              <div class="settings-row-title">استيراد نسخة احتياطية</div>
+              <div class="settings-row-desc">استعد بياناتك من ملف نسخة احتياطية سابقة.</div>
+            </div>
+            <label class="btn btn-gold-outline btn-sm mb-0">
+              <i class="bi bi-upload"></i>
+              <input type="file" id="importBackupInput" accept="application/json" class="d-none" onchange="importBackup(this.files[0])">
+            </label>
+          </div>
+          <div class="settings-row d-flex justify-content-between align-items-center">
+            <div>
+              <div class="settings-row-title">تحديث ذاكرة التخزين المؤقت</div>
+              <div class="settings-row-desc">اجلب أحدث نسخة من التطبيق فوراً بدون مسح بياناتك.</div>
+            </div>
+            <button onclick="refreshAppCache()" class="btn btn-gold-outline btn-sm"><i class="bi bi-arrow-repeat"></i></button>
+          </div>
+          <div class="settings-row d-flex justify-content-between align-items-center">
+            <div>
+              <div class="settings-row-title text-danger">مسح جميع البيانات</div>
+              <div class="settings-row-desc">حذف كل شيء نهائياً وإعادة التطبيق لحالته الأصلية.</div>
+            </div>
+            <button onclick="clearAppStorage()" class="btn btn-outline-danger btn-sm">
+              <i class="bi bi-trash3-fill"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- ============== قسم عام ============== -->
+        <div class="settings-section-title"><i class="bi bi-info-circle-fill"></i> عام</div>
+        <div class="settings-card">
+          <div class="settings-row d-flex justify-content-between align-items-center">
+            <div>
+              <div class="settings-row-title text-danger">تسجيل الخروج</div>
+              <div class="settings-row-desc">الخروج من حسابك على هذا الجهاز.</div>
+            </div>
+            <button id="logoutButton" class="btn btn-outline-danger btn-sm"><i class="bi bi-box-arrow-right"></i></button>
+          </div>
+          <div class="settings-row d-flex justify-content-between align-items-center">
+            <div>
+              <div class="settings-row-title">صدقة جارية</div>
+              <div class="settings-row-desc">شارك تطبيق إشراق مع أصدقائك والدال على الخير كفاعله.</div>
+            </div>
+            <button onclick="shareApp()" class="btn btn-gold-solid btn-sm"><i class="bi bi-send-fill"></i></button>
+          </div>
+          <div class="settings-row d-flex justify-content-between align-items-center" id="installRow" style="display: none;">
+            <div>
+              <div class="settings-row-title">تثبيت التطبيق</div>
+              <div class="settings-row-desc">ثبت إشراق على هاتفك للوصول السريع والتصفح السهل.</div>
+            </div>
+            <button id="installAppBtn" class="btn btn-gold-solid btn-sm">تثبيت</button>
+          </div>
+          <div class="settings-row">
+            <div class="settings-row-title mb-2">حول تطبيق إشراق</div>
+            <p class="settings-row-desc mb-2">
+              تطبيق إشراق هو رفيقك الإسلامي اليومي، مصمم بعناية ليقدم تجربة
+              مستخدم هادئة، خالية من الإعلانات، وبأعلى معايير الجودة البرمجية.
+            </p>
+            <div class="d-flex justify-content-center align-items-center pt-2 border-top border-secondary opacity-75 small">
+              <a href="#wn" class="text-decoration-none gold opacity-50">الإصدار: v1.0.0 (نسخة تجريبية)</a>
+              <!-- <span style="color: #edcea0"></span> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- شريط التنقل السفلي الثابت للهواتف -->
+    <nav class="bottom-nav fixed-bottom d-md-none">
+      <div
+        class="container d-flex justify-content-around align-items-center py-2"
+      >
+        <!-- زر الرئيسية -->
+        <a
+          href="index.html"
+          class="nav-item-bottom text-center text-decoration-none"
+          data-page="home"
+        >
+          <i class="bi bi-house-door fs-5 d-block"></i>
+          <i class="bi bi-house-door-fill fs-5 d-block active-icon"></i>
+          <span class="small">الرئيسية</span>
+        </a>
+
+        <!-- زر السبحة -->
+        <a
+          href="tasbeeh.html"
+          class="nav-item-bottom text-center text-decoration-none"
+          data-page="tasbeeh"
+        >
+          <i class="bi bi-circle fs-5 d-block"></i>
+          <i class="bi bi-record-circle-fill fs-5 d-block active-icon"></i>
+          <span class="small">السبحة</span>
+        </a>
+
+        <!-- زر البوصلة -->
+        <a
+          href="qibla.html"
+          class="nav-item-bottom text-center text-decoration-none"
+          data-page="qibla"
+        >
+          <i class="bi bi-compass fs-5 d-block"></i>
+          <i class="bi bi-compass-fill fs-5 d-block active-icon"></i>
+          <span class="small">القبلة</span>
+        </a>
+
+        <!-- زر المطوف -->
+        <!-- زر المطوف (باستخدام أيقونة تعبر عن السعي والحركة) -->
+<a
+  href="matwaf.html"
+  class="nav-item-bottom text-center text-decoration-none"
+  data-page="matwaf"
+>
+  <i class="bi bi-person-walking fs-5 d-block"></i>
+  <i class="bi bi-person-walking fs-5 d-block active-icon"></i>
+  <span class="small">المطوف</span>
+</a>
+
+        <!-- زر الإعدادات -->
+        <a
+          href="settings.html"
+          class="nav-item-bottom text-center text-decoration-none active"
+          data-page="settings"
+        >
+          <i class="bi bi-gear fs-5 d-block"></i>
+          <i class="bi bi-gear-fill fs-5 d-block active-icon"></i>
+          <span class="small">الإعدادات</span>
+        </a>
+      </div>
+    </nav>
+
+    <!-- نافذة "ما الجديد في إشراق" -->
+    <div class="modal fade" id="whatsNewModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content bg-dark border border-gold-subtle">
+          <div class="modal-header border-bottom border-gold-subtle">
+            <h5 class="modal-title gold fw-bold">
+              <i class="bi bi-gift-fill me-2"></i>ما الجديد — إشراق <span class="badge bg-gold text-dark ms-1">V1.0</span>
+            </h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+
+            <div class="whats-new-section">
+              <div class="whats-new-section-title"><i class="bi bi-book-fill me-2"></i>القرآن الكريم</div>
+              <ul class="whats-new-list">
+                <li>قراءة جميع السور بعرض عادي أو عرض المصحف المتصل، مع تكبير/تصغير الخط والرسم العثماني</li>
+                <li>استماع لتلاوة السورة كاملة بأربعة قراء، مع شريط تقدم وتحكم بالصوت وتنزيل للاستماع أوفلاين</li>
+                <li>تشغيل تلقائي متسلسل بين السور (Playlist)</li>
+                <li>حفظ آخر موضع قراءة والعودة له تلقائياً، وأرشيف لآخر 5 سور مقروءة</li>
+                <li>فهرسة حسب الجزء، وبحث صوتي، ورابط مباشر لأي آية</li>
+                <li>تفسير مختصر فوري لكل آية، وعلامات مرجعية متعددة، ومتتبع للختمة</li>
+                <li>وضع القراءة المركزة (ملء الشاشة) بشريط أدوات ثابت أثناء التمرير</li>
+              </ul>
+            </div>
+
+            <div class="whats-new-section">
+              <div class="whats-new-section-title"><i class="bi bi-moon-stars-fill me-2"></i>الأذكار والأوراد والأدعية</div>
+              <ul class="whats-new-list">
+                <li>أذكار الصباح والمساء والنوم والاستيقاظ وبعد الصلاة، وأذكار متفرقة</li>
+                <li>أوراد النووي والبحر والنصر</li>
+                <li>أدعية من القرآن والسنة، ورمضان، والسفر، والجمعة، والمريض، وتفريج الهمّ، والحمل والولادة، والزواج</li>
+                <li>عدّاد تفاعلي لكل ذكر ودعاء، و"دعاء اليوم" يتغير تلقائياً</li>
+                <li>بحث نصي شامل، وفرز حسب الطول، وإضافة أدعية شخصية خاصة بك</li>
+                <li>مشاركة أي دعاء كصورة مصممة جاهزة للمشاركة</li>
+              </ul>
+            </div>
+
+            <div class="whats-new-section">
+              <div class="whats-new-section-title"><i class="bi bi-circle me-2"></i>السبحة</div>
+              <ul class="whats-new-list">
+                <li>عدّاد تفاعلي بأصوات نقر متعددة (خشبي/معدني/صامت) واهتزاز بأنماط مختلفة</li>
+                <li>أهداف يومية ورسم بياني أسبوعي لتسبيحك</li>
+                <li>التسبيح بالسحب، والتسبيح بأسماء الله الحسنى مع شرح كل اسم</li>
+                <li>تحدي الأصدقاء، وتذكير مسائي لطيف إذا نسيت التسبيح</li>
+              </ul>
+            </div>
+
+            <div class="whats-new-section">
+              <div class="whats-new-section-title"><i class="bi bi-compass-fill me-2"></i>القبلة والمطوف</div>
+              <ul class="whats-new-list">
+                <li>بوصلة قبلة دقيقة ومعايرة بالكامل لجميع الأجهزة</li>
+                <li>دليل تفاعلي خطوة بخطوة للعمرة والحج مع عدّاد أشواط</li>
+                <li>أرشيف لإنجازاتك (عُمَراتي وحجّاتي) وأدعية إضافية ودعاء دخول مكة</li>
+              </ul>
+            </div>
+
+            <div class="whats-new-section">
+              <div class="whats-new-section-title"><i class="bi bi-bell-fill me-2"></i>الإشعارات والمفضلة</div>
+              <ul class="whats-new-list">
+                <li>تنبيه فوري بدخول وقت الصلاة من أي صفحة بالتطبيق، مع اختيار طريقة الحساب</li>
+                <li>تذكيرات أسبوعية (الجمعة) ويومية (السبحة) قابلة للتخصيص</li>
+                <li>صفحة مفضلة موحدة تجمع كل ما أضفته من القرآن والأذكار والأوراد والأدعية بمكان واحد</li>
+              </ul>
+            </div>
+
+            <div class="whats-new-section">
+              <div class="whats-new-section-title"><i class="bi bi-gear-fill me-2"></i>الإعدادات والهوية</div>
+              <ul class="whats-new-list">
+                <li>تحكم كامل بالقارئ الافتراضي وحجم الخط والرسم العثماني من مكان واحد</li>
+                <li>نسخ احتياطي لبياناتك واستعادتها، وتحديث ذاكرة التخزين المؤقت</li>
+                <li>الوضع الليلي، ودعم العمل بدون إنترنت (PWA)، وتصميم متجاوب بالكامل على كل الأجهزة</li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScript الخاص بالإعدادات -->
+    
+    <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-auth-compat.js"></script>
+    <script src="./firebase-config.js"></script>
+    <script src="./settings.js"></script>
+    <script src="./main.js"></script>
+    <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
+  import {
+    getAuth,
+    signOut
+  } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyD3RQ2jrXcJOUqmhUrGuBQ6R8kZ2sSLOr0",
+    authDomain: "alishraq-fe305.firebaseapp.com",
+    projectId: "alishraq-fe305",
+    storageBucket: "alishraq-fe305.firebasestorage.app",
+    messagingSenderId: "816905605188",
+    appId: "1:816905605188:web:639252ce9ef899bd622c11",
+    measurementId: "G-X6NV8MT549"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  const logoutButton = document.getElementById("logoutButton");
+
+  if (logoutButton) {
+    logoutButton.addEventListener("click", async () => {
+      try {
+        await signOut(auth);
+        window.location.replace("./login.html");
+      } catch (error) {
+        console.error("Logout error:", error);
+        alert("تعذر تسجيل الخروج، حاول مرة أخرى.");
+      }
+    });
+  }
+    </script>
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

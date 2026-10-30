@@ -1,0 +1,1339 @@
+:root {
+  --bg-dark: #21211D;
+  --gold-accent: #EDCEA0;
+  --text-light: #F8F9FA;
+  --desc-text-color: #D3D3C7; /* درجة وضوح عالية وقابلة للقراءة */
+}
+/* منع التمرير الأفقي المزعج نهائياً على الموبايل */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden !important;
+}
+body {
+  font-family: 'Tajawal', sans-serif;
+  background-color: var(--bg-dark);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 160 80'%3E%3Cg fill='%23EDCEA0' fill-opacity='0.03'%3E%3Cpolygon points='0 10 0 0 10 0'/%3E%3Cpolygon points='0 40 0 30 10 30'/%3E%3Cpolygon points='0 30 0 20 10 20'/%3E%3Cpolygon points='0 70 0 60 10 60'/%3E%3Cpolygon points='0 80 0 70 10 70'/%3E%3Cpolygon points='50 80 50 70 60 70'/%3E%3Cpolygon points='10 20 10 10 20 10'/%3E%3Cpolygon points='10 40 10 30 20 30'/%3E%3Cpolygon points='20 10 20 0 30 0'/%3E%3Cpolygon points='30 20 30 10 40 10'/%3E%3Cpolygon points='20 20 20 40 40 20'/%3E%3Cpolygon points='40 10 40 0 50 0'/%3E%3Cpolygon points='40 20 40 10 50 10'/%3E%3Cpolygon points='40 40 40 30 50 30'/%3E%3Cpolygon points='30 40 30 30 40 30'/%3E%3Cpolygon points='40 60 40 50 50 50'/%3E%3Cpolygon points='50 30 50 20 60 20'/%3E%3Cpolygon points='40 60 40 80 60 60'/%3E%3Cpolygon points='50 40 50 60 70 40'/%3E%3Cpolygon points='60 0 60 20 80 0'/%3E%3Cpolygon points='70 30 70 20 80 20'/%3E%3Cpolygon points='70 40 70 30 80 30'/%3E%3Cpolygon points='60 60 60 80 80 60'/%3E%3Cpolygon points='80 10 80 0 90 0'/%3E%3Cpolygon points='70 40 70 60 90 40'/%3E%3Cpolygon points='80 60 80 50 90 50'/%3E%3Cpolygon points='60 30 60 20 70 20'/%3E%3Cpolygon points='80 70 80 80 90 80 100 70'/%3E%3Cpolygon points='80 10 80 40 110 10'/%3E%3Cpolygon points='110 40 110 30 120 30'/%3E%3Cpolygon points='90 40 90 70 120 40'/%3E%3Cpolygon points='10 50 10 80 40 50'/%3E%3Cpolygon points='110 60 110 50 120 50'/%3E%3Cpolygon points='100 60 100 80 120 60'/%3E%3Cpolygon points='110 0 110 20 130 0'/%3E%3Cpolygon points='120 30 120 20 130 20'/%3E%3Cpolygon points='130 10 130 0 140 0'/%3E%3Cpolygon points='130 30 130 20 140 20'/%3E%3Cpolygon points='120 40 120 30 130 30'/%3E%3Cpolygon points='130 50 130 40 140 40'/%3E%3Cpolygon points='120 50 120 70 140 50'/%3E%3Cpolygon points='110 70 110 80 130 80 140 70'/%3E%3Cpolygon points='140 10 140 0 150 0'/%3E%3Cpolygon points='140 20 140 10 150 10'/%3E%3Cpolygon points='140 40 140 30 150 30'/%3E%3Cpolygon points='140 50 140 40 150 40'/%3E%3Cpolygon points='140 70 140 60 150 60'/%3E%3Cpolygon points='150 20 150 40 160 30 160 20'/%3E%3Cpolygon points='150 60 150 50 160 50'/%3E%3Cpolygon points='140 70 140 80 150 80 160 70'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat;
+  color: var(--text-light);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.gold {
+  color: var(--gold-accent) !important;
+}
+
+.hero-title {
+  font-size: clamp(1.5rem, 3vw, 2.3rem);
+}
+
+/* --- تصميم كرت مواقيت الصلاة --- */
+.prayer-card {
+  background-color: #1b1b18;
+  border: 1px solid rgba(237, 206, 160, 0.3);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.border-gold-subtle {
+  border-color: rgba(237, 206, 160, 0.15) !important;
+}
+
+.badge-gold {
+  background-color: rgba(237, 206, 160, 0.15);
+  color: var(--gold-accent);
+  border: 1px solid var(--gold-accent);
+  font-size: 0.8rem;
+  padding: 5px 12px;
+  border-radius: 20px;
+}
+
+/* تصميم العداد التنازلي الرقمي */
+.countdown-box {
+  background-color: #21211d;
+  border: 1px solid rgba(237, 206, 160, 0.2);
+  border-radius: 12px;
+  display: inline-flex;
+}
+
+.time-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 50px;
+}
+
+.time-num {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--gold-accent);
+  font-family: monospace, 'Tajawal', sans-serif;
+  line-height: 1.1;
+}
+
+.time-label {
+  font-size: 0.7rem;
+  color: #a0a090;
+}
+
+.time-colon {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--gold-accent);
+  line-height: 1;
+}
+
+/* شبكة الصلوات الفرعية */
+.p-item {
+  background-color: #21211d;
+  border: 1px solid rgba(237, 206, 160, 0.1);
+  transition: all 0.3s ease;
+}
+
+.p-item .p-title {
+  font-size: 0.85rem;
+  color: #ccc;
+}
+
+.p-item .p-time {
+  font-size: 0.95rem;
+}
+.style-gregorian {
+  font-size: 1.1rem;
+  margin-top: 2px;
+}
+
+/* تمييز الصلاة القادمة/الحالية (Active State) */
+.p-item.active {
+  background-color: rgba(237, 206, 160, 0.15);
+  border-color: var(--gold-accent);
+  box-shadow: 0 0 10px rgba(237, 206, 160, 0.2);
+  transform: translateY(-2px);
+}
+
+.p-item.active .p-title {
+  color: var(--gold-accent);
+  font-weight: bold;
+}
+
+/* تنسيق كروت الإشراقات */
+.card-eshraq {
+  background-color: #21211d !important;
+  border-radius: 12px !important;
+  border: 1px solid rgba(237, 206, 160, 0.2) !important;
+}
+
+.dark-b1 {
+  border-top: 0.25rem solid var(--gold-accent) !important;
+  border-left: 0.25rem solid var(--gold-accent) !important;
+}
+
+.dark-b2 {
+  border-right: 0.25rem solid var(--gold-accent) !important;
+  border-bottom: 0.25rem solid var(--gold-accent) !important;
+}
+
+.ref-text {
+  font-size: 0.85rem;
+  color: var(--gold-accent);
+}
+
+.desc-text {
+  color: var(--desc-text-color) !important;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* الأزرار الجديدة المتوافقة مع الهوية */
+.btn-gold-outline {
+  border: 1px solid var(--gold-accent) !important;
+  color: var(--gold-accent) !important;
+  background-color: transparent !important;
+  transition: all 0.3s ease;
+}
+
+.btn-gold-outline:hover {
+  background-color: rgba(237, 206, 160, 0.15) !important;
+  color: #fff !important;
+}
+
+.btn-gold-solid {
+  background-color: var(--gold-accent) !important;
+  color: #21211d !important;
+  border: 1px solid var(--gold-accent) !important;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-gold-solid:hover {
+  background-color: #dcb07a !important;
+  color: #000 !important;
+}
+
+/* --- تصميم السبحة الإلكترونية --- */
+.tasbeeh-card {
+  background-color: #1b1b18;
+  border: 1px solid rgba(237, 206, 160, 0.3);
+}
+
+.tasbeeh-circle-btn {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #2a2a24 0%, #1a1a17 100%);
+  border: 3px solid var(--gold-accent);
+  box-shadow: 0 0 20px rgba(237, 206, 160, 0.2);
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.2s ease;
+  user-select: none;
+}
+
+.tasbeeh-circle-btn:active {
+  transform: scale(0.93);
+  box-shadow: 0 0 10px rgba(237, 206, 160, 0.4);
+}
+
+/* شبكة كروت الأقسام الستة */
+.grid-card {
+  background-color: #21211d;
+  border: 1px solid rgba(237, 206, 160, 0.25);
+  border-radius: 12px;
+  padding: 30px 15px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.grid-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--gold-accent);
+  box-shadow: 0 8px 20px rgba(237, 206, 160, 0.15);
+}
+
+.grid-icon {
+  width: 60px;
+  height: auto;
+}
+/* --- تصميم بوصلة القِبلة --- */
+.qibla-card {
+  background-color: #1b1b18;
+  border: 1px solid rgba(237, 206, 160, 0.3);
+}
+
+.compass-container {
+  width: 200px;
+  height: 200px;
+}
+
+.compass-dial {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 3px dashed rgba(237, 206, 160, 0.4);
+  background: radial-gradient(circle, #252520 0%, #151512 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+}
+
+.qibla-pointer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  transition: transform 0.1s ease-out;
+}
+/* --- تصميم قسم تحميل التطبيق (شفاف بدون تغيير الخلفية الأساسية) --- */
+.pwa-download-section {
+  background-color: transparent !important;
+  border: none !important; /* إلغاء الخط الممتد بعرض الشاشة */
+  position: relative;
+  padding-top: 2rem;
+}
+
+/* إضافة خط جديد بعرض نصف الشاشة وفي المنتصف */
+.pwa-download-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%); /* للمحافظة على الخط في المنتصف تماماً */
+  width: 50%; /* عرض الخط (نصف الشاشة) */
+  height: 3px; /* سماكة الخط */
+  background-color: rgba(237, 206, 160, 0.15); /* لون الخط الذهبي */
+  border-radius: 10px;
+  opacity: 0.8;
+}
+
+.download-card {
+  background-color: #21211d; /* لون كروت داكن ومريح للعين مع الهوية */
+  border: 1px solid rgba(237, 206, 160, 0.2);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.download-card:hover {
+  transform: translateY(-7px);
+  border-color: var(--gold-accent);
+  box-shadow: 0 10px 25px rgba(237, 206, 160, 0.12);
+}
+
+.download-card .os-icon i {
+  transition: transform 0.3s ease;
+}
+
+.download-card:hover .os-icon i {
+  transform: scale(1.15);
+}
+footer {
+  background-color: #1a1a17;
+  border-top: 1px solid rgba(237, 206, 160, 0.1);
+  margin-top: auto;
+}
+/* --- تصميم الشريط السفلي الثابت --- */
+.bottom-nav {
+  background-color: #151512;
+  border-top: 1px solid rgba(237, 206, 160, 0.2);
+  box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.4);
+  z-index: 1050;
+}
+
+.nav-item-bottom {
+  color: #8c8c85;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+/* إخفاء الأيقونة الممتلئة افتراضياً وإظهار الفارغة */
+.nav-item-bottom .active-icon {
+  display: none !important;
+}
+
+.nav-item-bottom .bi {
+  font-size: 1.25rem;
+}
+
+.nav-item-bottom span {
+  font-size: 0.75rem;
+  margin-top: 2px;
+  display: block;
+}
+
+/* عندما يكون العنصر نشطاً (Active) */
+.nav-item-bottom.active {
+  color: var(--gold-color, #c5a059) !important;
+  transform: translateY(-2px);
+}
+
+.nav-item-bottom.active .bi {
+  display: none !important;
+}
+
+.nav-item-bottom.active .active-icon {
+  display: block !important;
+  color: var(--gold-color, #c5a059);
+}
+
+/* إضافة خط صغير ذهبي فوق العنصر النشط لجمالية بصرية أعلى */
+.nav-item-bottom.active::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 3px;
+  background-color: var(--gold-color, #c5a059);
+  border-radius: 2px;
+}
+
+/* تنسيقات كروت الخلفية والسبحة */
+.bg-card-dark {
+  background-color: #1b1b18;
+  border: 1px solid rgba(237, 206, 160, 0.2);
+}
+
+.border-gold-subtle {
+  border-color: rgba(237, 206, 160, 0.25) !important;
+}
+
+.btn-gold-solid {
+  background-color: var(--gold-color, #c5a059);
+  color: #121212;
+  font-weight: bold;
+}
+.btn-gold-solid:hover {
+  background-color: #d4af37;
+  color: #000;
+}
+
+.btn-outline-gold {
+  color: var(--gold-color, #c5a059);
+  border-color: var(--gold-color, #c5a059);
+}
+.btn-outline-gold:hover, .btn-outline-gold.active {
+  background-color: var(--gold-color, #c5a059) !important;
+  color: #121212 !important;
+}
+
+/* --- الألوان والهوية العامة --- */
+:root {
+  --gold-color: #c5a059;
+}
+
+.gold {
+  color: var(--gold-color) !important;
+}
+
+.bg-card-dark {
+  background-color: #181815;
+  border: 1px solid rgba(237, 206, 160, 0.15);
+}
+
+.border-gold-subtle {
+  border-color: rgba(237, 206, 160, 0.2) !important;
+}
+
+.btn-gold-solid {
+  background-color: var(--gold-color);
+  color: #121212;
+  font-weight: bold;
+  border: none;
+}
+.btn-gold-solid:hover {
+  background-color: #d4af37;
+  color: #000;
+}
+
+/* --- دائرة التسبيح الفخمة --- */
+.counter-ring {
+  width: 200px;
+  height: 200px;
+  border: 3px solid rgba(197, 160, 89, 0.4);
+  background: radial-gradient(circle, #22221d 0%, #121210 100%);
+  transition: transform 0.08s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  user-select: none;
+}
+
+.counter-ring:active {
+  transform: scale(0.96);
+  border-color: var(--gold-color);
+  box-shadow: 0 0 25px rgba(197, 160, 89, 0.25);
+}
+
+/* --- خرزات المسبحة الناعمة --- */
+.tasbeeh-bead {
+  width: 10px;
+  height: 10px;
+  background-color: #2b2b27;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.tasbeeh-bead.active-bead {
+  background-color: var(--gold-color);
+  transform: scale(1.5);
+  box-shadow: 0 0 6px var(--gold-color);
+}
+/* تنسيق زر السويتش المخصص للذهبى */
+.form-check-input:checked {
+  background-color: #edcea0 !important;
+  border-color: #edcea0 !important;
+}
+/* شريط تقدم تلاوة السورة الصوتية */
+#audio-seek, #audio-volume {
+  accent-color: #edcea0;
+}
+
+/* تمييز الآية الحالية أثناء الاستماع للتلاوة */
+.ayah-item.active-ayah {
+  background-color: rgba(237, 206, 160, 0.12);
+  border-radius: 12px;
+  box-shadow: 0 0 0 1px rgba(237, 206, 160, 0.4);
+  transition: background-color 0.4s ease;
+}
+.mushaf-ayah-unit.active-ayah {
+  background-color: rgba(237, 206, 160, 0.25);
+  border-radius: 4px;
+  transition: background-color 0.4s ease;
+}
+
+/* وضع القراءة المركزة (ملء الشاشة) */
+/* شريط أدوات القراءة - يبقى ظاهراً أثناء التمرير */
+.reader-toolbar {
+  position: sticky;
+  top: 112px; /* يساوي ارتفاع الهيدر الثابت العلوي حتى لا يغطيه */
+  z-index: 900;
+  background-color: #21211d;
+}
+
+body.focus-reading-mode header {
+  display: none !important;
+}
+body.focus-reading-mode .bottom-nav {
+  display: none !important;
+}
+body.focus-reading-mode #surah-main {
+  margin-top: 20px !important;
+}
+body.focus-reading-mode .reader-toolbar {
+  top: 0; /* بما إن الهيدر مخفي بهذا الوضع، يلتصق الشريط بأعلى الشاشة تماماً */
+}
+
+/* ===== بطاقات الأذكار / الأوراد / الأدعية ===== */
+.zikr-card {
+  background: rgba(33, 33, 29, 0.6);
+  border: 1px solid rgba(237, 206, 160, 0.15);
+  border-radius: 1rem;
+  padding: 1.1rem 1.25rem;
+  margin-bottom: 1rem;
+  transition: opacity 0.3s ease, background 0.3s ease;
+}
+.zikr-card.done {
+  opacity: 0.4;
+}
+.zikr-text {
+  font-family: 'Amiri', 'Traditional Arabic', serif;
+  line-height: 2.1;
+  color: #f8f9fa;
+}
+.zikr-source {
+  font-size: 0.78rem;
+  opacity: 0.65;
+}
+.zikr-count-btn {
+  background: transparent;
+  border: 2px solid var(--gold-color, #edcea0);
+  color: var(--gold-color, #edcea0);
+  border-radius: 50%;
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.05rem;
+  flex-shrink: 0;
+  transition: transform 0.15s ease, background 0.2s ease;
+}
+.zikr-count-btn:active {
+  transform: scale(0.88);
+}
+.zikr-card.done .zikr-count-btn {
+  background: var(--gold-color, #edcea0);
+  color: #21211d;
+  border-color: var(--gold-color, #edcea0);
+}
+.zikr-actions .btn {
+  opacity: 0.75;
+}
+/* شرائط تبويب الفئات (صباح/مساء، النووي/البحر/النصر...) */
+.category-tabs {
+  overflow-x: auto;
+  white-space: nowrap;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  padding-bottom: 4px;
+}
+.category-tabs::-webkit-scrollbar { display: none; }
+.category-tabs .btn {
+  flex-shrink: 0;
+}
+.category-tabs .btn.active-tab {
+  background-color: var(--gold-color, #edcea0) !important;
+  color: #21211d !important;
+  font-weight: 600;
+  border-color: var(--gold-color, #edcea0) !important;
+}
+.zikr-progress-note {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+.bg-gold {
+  background-color: #edcea0 !important;
+}
+
+/* ===== بطاقات "تعرّف على الأقسام" بالصفحة الرئيسية (تصميم مختلف لكل بطاقة) ===== */
+.inspire-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 1.25rem;
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  background: #262621;
+  border: 1px solid rgba(237, 206, 160, 0.18);
+}
+.inspire-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.45);
+}
+.inspire-card .inspire-ayah {
+  font-family: 'Amiri Quran', 'Amiri', 'Traditional Arabic', serif;
+  font-size: 1.05rem;
+  line-height: 2.1;
+  color: #f8f9fa;
+  margin-bottom: 0.5rem;
+  flex-grow: 1;
+}
+.inspire-card .inspire-ayah-source {
+  font-size: 0.72rem;
+  opacity: 0.6;
+  margin-bottom: 0.75rem;
+}
+.inspire-card .inspire-phrase {
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+.inspire-card .btn {
+  margin-top: auto;
+}
+
+/* 1. القرآن — اقتباس كلاسيكي بحد ذهبي جانبي وعلامة تنصيص ضخمة */
+.inspire-card-1 {
+  background: linear-gradient(165deg, #262621 60%, #2c2a22);
+  border-right: 4px solid #edcea0;
+  border-radius: 0.5rem 1.5rem 1.5rem 0.5rem;
+}
+.inspire-card-1::before {
+  content: "\201D";
+  position: absolute;
+  top: -20px;
+  left: 10px;
+  font-size: 7rem;
+  color: rgba(237, 206, 160, 0.08);
+  font-family: Georgia, serif;
+  line-height: 1;
+}
+.inspire-card-1 .inspire-title { color: #edcea0; font-weight: bold; font-size: 1.2rem; margin-bottom: 0.75rem; }
+.inspire-card-1 .inspire-phrase { color: #edcea0; }
+
+/* 2. الحديث — شريط علوي متدرج + شارة مائلة */
+.inspire-card-2 {
+  border-radius: 1.25rem;
+  border-top: none;
+}
+.inspire-card-2::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, #edcea0, #8a6d3b, #edcea0);
+}
+.inspire-card-2 .inspire-badge {
+  position: absolute;
+  top: 14px;
+  left: -32px;
+  background: #edcea0;
+  color: #21211d;
+  font-size: 0.7rem;
+  font-weight: bold;
+  padding: 3px 36px;
+  transform: rotate(-45deg);
+}
+.inspire-card-2 .inspire-title { color: #f8f9fa; font-weight: bold; font-size: 1.2rem; margin: 0.5rem 0 0.75rem; }
+.inspire-card-2 .inspire-phrase { color: #edcea0; }
+
+/* 3. الأذكار — دائرة توهّج مركزية ومحتوى متمركز */
+.inspire-card-3 {
+  text-align: center;
+  background: radial-gradient(circle at top, #2d2b24, #1d1d19 75%);
+  border-radius: 1.5rem;
+}
+.inspire-card-3 .inspire-icon-ring {
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  margin: 0 auto 0.75rem;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(237, 206, 160, 0.1);
+  box-shadow: 0 0 0 1px rgba(237, 206, 160, 0.3), 0 0 18px rgba(237, 206, 160, 0.25);
+  color: #edcea0;
+  font-size: 1.5rem;
+}
+.inspire-card-3 .inspire-title { color: #edcea0; font-weight: bold; font-size: 1.2rem; margin-bottom: 0.75rem; }
+.inspire-card-3 .inspire-phrase { color: #edcea0; }
+.inspire-card-3 .btn { margin-left: auto; margin-right: auto; }
+
+/* 4. الأوراد — تخطيط أفقي بفاصل عمودي */
+.inspire-card-4 {
+  border-radius: 1.25rem;
+  background: #221f1a;
+}
+.inspire-card-4 .inspire-row { display: flex; gap: 1rem; flex-grow: 1; }
+.inspire-card-4 .inspire-divider {
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, #edcea0, transparent);
+  flex-shrink: 0;
+}
+.inspire-card-4 .inspire-title { color: #edcea0; font-weight: bold; font-size: 1.05rem; writing-mode: vertical-rl; text-orientation: mixed; margin: 0; }
+.inspire-card-4 .inspire-phrase { color: #edcea0; }
+
+/* 5. الأدعية — بطاقة داخل بطاقة بهالة مضيئة */
+.inspire-card-5 {
+  border-radius: 1.5rem;
+  background: #262621;
+}
+.inspire-card-5::before {
+  content: "";
+  position: absolute;
+  width: 140px; height: 140px;
+  background: radial-gradient(circle, rgba(237, 206, 160, 0.18), transparent 70%);
+  top: -40px; right: -40px;
+  border-radius: 50%;
+}
+.inspire-card-5 .inspire-inset {
+  background: rgba(0,0,0,0.25);
+  border: 1px dashed rgba(237, 206, 160, 0.35);
+  border-radius: 1rem;
+  padding: 1rem;
+  flex-grow: 1;
+}
+.inspire-card-5 .inspire-title { color: #edcea0; font-weight: bold; font-size: 1.2rem; margin-bottom: 0.75rem; }
+.inspire-card-5 .inspire-phrase { color: #edcea0; }
+
+/* 7. المفضلة — بطاقة "مميزة" بإطار متوهج متحرك وشارة VIP */
+.inspire-card-favorites {
+  border-radius: 1.5rem;
+  padding: 2px;
+  background: linear-gradient(135deg, #edcea0, #8a6d3b, #edcea0, #fff6e0, #edcea0);
+  background-size: 300% 300%;
+  animation: favoritesShimmer 6s ease infinite;
+  position: relative;
+  height: 100%;
+}
+@keyframes favoritesShimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.inspire-card-favorites-inner {
+  background: radial-gradient(circle at 15% 50%, #332f23, #19191600 60%), #1a1a16;
+  border-radius: calc(1.5rem - 2px);
+  padding: 1.75rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  position: relative;
+  overflow: hidden;
+}
+.inspire-card-favorites .inspire-ribbon {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.68rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: #21211d;
+  background: #edcea0;
+  padding: 3px 14px;
+  border-radius: 999px;
+  box-shadow: 0 0 12px rgba(237, 206, 160, 0.6);
+}
+.inspire-card-favorites .inspire-star-burst {
+  flex-shrink: 0;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: #edcea0;
+  background: radial-gradient(circle, rgba(237, 206, 160, 0.25), transparent 70%);
+  box-shadow: 0 0 25px rgba(237, 206, 160, 0.4);
+}
+.inspire-card-favorites .inspire-text-block {
+  flex-grow: 1;
+  min-width: 200px;
+  text-align: right;
+}
+.inspire-card-favorites .inspire-title {
+  color: #fff6e0;
+  font-weight: bold;
+  font-size: 1.3rem;
+  margin-bottom: 0.35rem;
+  text-shadow: 0 0 14px rgba(237, 206, 160, 0.5);
+}
+.inspire-card-favorites .inspire-phrase {
+  color: #edcea0;
+  font-size: 0.92rem;
+  opacity: 0.9;
+  margin-bottom: 0;
+}
+.inspire-card-favorites .btn {
+  flex-shrink: 0;
+  background: linear-gradient(90deg, #edcea0, #fff6e0, #edcea0);
+  background-size: 200% auto;
+  color: #21211d;
+  font-weight: bold;
+  border: none;
+  transition: background-position 0.4s ease;
+  padding: 0.6rem 1.5rem;
+}
+.inspire-card-favorites .btn:hover {
+  background-position: right center;
+  color: #21211d;
+}
+@media (max-width: 576px) {
+  .inspire-card-favorites-inner { flex-direction: column; text-align: center; }
+  .inspire-card-favorites .inspire-text-block { text-align: center; }
+}
+
+/* 6. المطوف — تخطيط معكوس (الأيقونة بالأسفل) بحدود متقطعة توحي برحلة */
+.inspire-card-6 {
+  border: 2px dashed rgba(237, 206, 160, 0.4);
+  background: #21211d;
+  border-radius: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+.inspire-card-6 .inspire-title { color: #edcea0; font-weight: bold; font-size: 1.2rem; margin-bottom: 0.75rem; }
+.inspire-card-6 .inspire-phrase { color: #edcea0; }
+.inspire-card-6 .inspire-footer-icon {
+  font-size: 2rem;
+  color: #edcea0;
+  text-align: center;
+  margin-top: 0.75rem;
+  opacity: 0.8;
+}
+
+/* ===== كاروسيل الوصول السريع ===== */
+.quick-carousel-wrap {
+  max-width: 420px;
+  margin: 0 auto;
+}
+.quick-carousel-slide {
+  background: linear-gradient(145deg, #262621, #1d1d19);
+  border: 1px solid rgba(237, 206, 160, 0.2);
+  border-radius: 1.25rem;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  transition: border-color 0.3s ease;
+}
+.quick-carousel-slide:hover {
+  border-color: rgba(237, 206, 160, 0.6);
+}
+.quick-carousel-slide .quick-icon {
+  font-size: 2.2rem;
+  color: #edcea0;
+  margin-bottom: 0.75rem;
+}
+.quick-carousel-slide .quick-title {
+  color: #edcea0;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+#quickAccessCarousel .carousel-control-prev,
+#quickAccessCarousel .carousel-control-next {
+  width: 10%;
+  filter: invert(84%) sepia(15%) saturate(500%) hue-rotate(345deg);
+}
+#quickAccessCarousel .carousel-indicators [data-bs-target] {
+  background-color: #edcea0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+/* ===== بطاقة "ما الجديد" الفخمة ===== */
+.whats-new-card {
+  position: relative;
+  background: linear-gradient(135deg, #2a271e, #1a1a16 70%);
+  border: 1px solid rgba(237, 206, 160, 0.3);
+  border-radius: 1.25rem;
+  padding: 1.5rem;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.whats-new-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(237, 206, 160, 0.6);
+}
+.whats-new-glow {
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  background: radial-gradient(circle, rgba(237, 206, 160, 0.2), transparent 70%);
+  top: -60px;
+  left: -40px;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.whats-new-version {
+  display: inline-block;
+  background: #edcea0;
+  color: #21211d;
+  font-weight: bold;
+  font-size: 0.75rem;
+  padding: 2px 10px;
+  border-radius: 999px;
+}
+.whats-new-title {
+  color: #fff6e0;
+  font-weight: bold;
+  font-size: 1.15rem;
+}
+.whats-new-sub {
+  color: #edcea0;
+  font-size: 0.82rem;
+  opacity: 0.85;
+}
+.whats-new-arrow {
+  color: #edcea0;
+  font-size: 1.3rem;
+}
+.whats-new-section {
+  margin-bottom: 1.5rem;
+}
+.whats-new-section:last-child {
+  margin-bottom: 0;
+}
+.whats-new-section-title {
+  color: #edcea0;
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 0.6rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid rgba(237, 206, 160, 0.2);
+}
+.whats-new-list {
+  padding-right: 1.1rem;
+  margin-bottom: 0;
+}
+.whats-new-list li {
+  color: #f8f9fa;
+  font-size: 0.88rem;
+  line-height: 1.8;
+  margin-bottom: 0.4rem;
+  opacity: 0.9;
+}
+
+/* ===== صفحة الإعدادات الجديدة ===== */
+.settings-section-title {
+  color: #edcea0;
+  font-weight: bold;
+  font-size: 0.95rem;
+  margin: 1.75rem 0.25rem 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.settings-card {
+  background-color: #262621;
+  border: 1px solid rgba(237, 206, 160, 0.2);
+  border-radius: 1rem;
+  overflow: hidden;
+}
+.settings-row {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid rgba(237, 206, 160, 0.08);
+}
+.settings-row:last-child {
+  border-bottom: none;
+}
+.settings-row-title {
+  color: #edcea0;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 0.15rem;
+}
+.settings-row-desc {
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+.settings-select {
+  background-color: #1a1a16;
+  color: #f8f9fa;
+  border: 1px solid rgba(237, 206, 160, 0.3);
+  border-radius: 0.5rem;
+}
+.settings-select:focus {
+  border-color: #edcea0;
+  box-shadow: none;
+}
+
+/* ===== ميزات صفحة السبحة الجديدة ===== */
+.weekly-chart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 6px;
+  height: 90px;
+  padding: 0 4px;
+}
+.weekly-chart .bar-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+}
+.weekly-chart .bar {
+  width: 100%;
+  max-width: 22px;
+  background-color: rgba(237, 206, 160, 0.25);
+  border-radius: 6px 6px 0 0;
+  transition: height 0.4s ease;
+}
+.weekly-chart .bar.today {
+  background-color: #edcea0;
+}
+.weekly-chart .bar-label {
+  font-size: 0.7rem;
+  opacity: 0.7;
+  margin-top: 4px;
+}
+
+.sound-picker .btn.active-sound {
+  background-color: #edcea0 !important;
+  color: #21211d !important;
+  border-color: #edcea0 !important;
+}
+
+.asma-item {
+  background: rgba(33, 33, 29, 0.6);
+  border: 1px solid rgba(237, 206, 160, 0.15);
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.6rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.asma-item:hover, .asma-item:active {
+  background: rgba(237, 206, 160, 0.12);
+}
+.asma-item .asma-name {
+  font-family: 'Amiri', 'Traditional Arabic', serif;
+  font-size: 1.3rem;
+}
+.asma-item .asma-meaning {
+  font-size: 0.8rem;
+  opacity: 0.75;
+}
+
+.counter-circle-container {
+  touch-action: none; /* لمنع تمرير الصفحة أثناء سحب الإصبع فوق الدائرة (ميزة التسبيح بالسحب) */
+}
+/* تنسيقات خطوات رحلة العمرة */
+.step-indicator {
+  opacity: 0.4;
+  transition: all 0.3s ease;
+  color: #fff;
+}
+
+.step-indicator.active {
+  opacity: 1;
+  color: #edcea0;
+  font-weight: bold;
+}
+
+.step-indicator.completed {
+  opacity: 0.8;
+  color: #2ecc71;
+}
+
+.badge-num {
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(33, 33, 29, 0.9);
+  border: 1px solid rgba(237, 206, 160, 0.4);
+  border-radius: 50%;
+  font-size: 0.85rem;
+}
+
+.step-indicator.active .badge-num {
+  background: #edcea0;
+  color: #21211D;
+  border-color: #edcea0;
+  box-shadow: 0 0 10px rgba(237, 206, 160, 0.4);
+}
+
+.step-line {
+  flex-grow: 1;
+  height: 1px;
+  background: rgba(237, 206, 160, 0.2);
+  margin: 0 5px;
+}
+.mutawwif-card {
+  background-color: #21211D; /* نفس لون الهيدر الغامق الأساسي */
+  border: 1px solid rgba(237, 206, 160, 0.2); /* إطار ذهبي خفيف وشفاف */
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.5) !important;
+}
+
+/* لون الصناديق الداخلية (أدعية أو تنبيهات) */
+.supplication-box {
+  background: rgba(33, 33, 29, 0.6);
+  border: 1px solid rgba(237, 206, 160, 0.15);
+  overflow-x: hidden; /* لإلغاء شريط التمرير الأفقي وإخفائه */
+overflow-y: auto;   /* لإبقاء التمرير العمودي عند الحاجة */
+
+    /* تخصيص شريط التمرير لمتصفحات كروم وسفاري وأيدج */
+    scrollbar-width: thin; /* لمتصفح فايرفوكس (يعطي شكلاً نحيفاً) */
+    scrollbar-color: rgba(237, 206, 160, 0.5) rgba(33, 33, 29, 0.3); /* لون المقبض ولون الخلفية لفايرفوكس */
+}
+.supplication-box-1{
+    background: rgba(33, 33, 29, 0.6);
+  border: 1px solid rgba(237, 206, 160, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+
+}
+.supplication-box-1:hover{
+  transform: translateY(-5px);
+  border-color: var(--gold-accent);
+  box-shadow: 0 8px 20px rgba(237, 206, 160, 0.15);  
+}
+
+
+
+
+
+
+/* وضع القراءة الليلية الفعلي عند تفعيله على جذر الصفحة */
+html[data-night-mode="true"] body {
+  background-color: #0b0b0a !important; /* خلفية داكنة جداً ومريحة للعين */
+  color: #c5c5c0 !important;           /* نص هادئ غير ناصع البياض لمنع التوهج */
+}
+
+html[data-night-mode="true"] .card, 
+html[data-night-mode="true"] .navbar, 
+html[data-night-mode="true"] .bottom-nav {
+  background-color: #141412 !important;
+  border-color: rgba(237, 206, 160, 0.1) !important;
+}
+
+/* تخفيف حدة العناوين الذهبية لتصير أهدأ بالليل */
+html[data-night-mode="true"] .gold, 
+html[data-night-mode="true"] h1, 
+html[data-night-mode="true"] h2, 
+html[data-night-mode="true"] h3, 
+html[data-night-mode="true"] h4, 
+html[data-night-mode="true"] h5, 
+html[data-night-mode="true"] h6 {
+  color: #d4b886 !important; 
+}
+
+/* تأثيرات الإضاءة الرادارية لخلفية البوصلة */
+.compass-container {
+  width: 240px;
+  height: 240px;
+}
+
+.qibla-radar-ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(237, 206, 160, 0.08) 0%, transparent 70%);
+  animation: radarPulse 3s infinite ease-in-out;
+  pointer-events: none;
+}
+
+@keyframes radarPulse {
+  0% { transform: scale(0.9); opacity: 0.5; }
+  50% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(0.9); opacity: 0.5; }
+}
+
+/* قرص البوصلة الأساسي */
+.compass-dial {
+  width: 210px;
+  height: 210px;
+  border: 2px solid rgba(237, 206, 160, 0.35);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(20, 20, 18, 0.7);
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.8), 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+/* حالة النجاح والتطابق التام مع القبلة (إضاءة خضراء فخمة) */
+.compass-dial.aligned-success {
+  border-color: #2ecc71 !important;
+  box-shadow: inset 0 0 20px rgba(46, 204, 113, 0.3), 0 0 25px rgba(46, 204, 113, 0.5);
+  background: rgba(20, 35, 25, 0.8);
+}
+
+/* وردة الاتجاهات الأربعة */
+.compass-rose {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.rose-dir {
+  position: absolute;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #edcea0;
+  opacity: 0.5;
+}
+
+.rose-dir.north { top: 8px; left: 50%; transform: translateX(-50%); color: #e74c3c; opacity: 1; text-shadow: 0 0 5px rgba(231, 76, 60, 0.6); }
+.rose-dir.south { bottom: 8px; left: 50%; transform: translateX(-50%); }
+.rose-dir.east { right: 12px; top: 50%; transform: translateY(-50%); }
+.rose-dir.west { left: 12px; top: 50%; transform: translateY(-50%); }
+
+/* مؤشر القبلة المتحرك بسلاسة مذهلة */
+.qibla-pointer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  transition: transform 0.1s linear;
+}
+
+/* مكعب الكعبة المنفصل والأنيق فوق السهم */
+.kaaba-marker {
+  position: absolute;
+  top: 14px;
+  background: #151512;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid #edcea0;
+  z-index: 3;
+}
+
+.kaaba-marker i {
+  font-size: 0.75rem !important;
+}
+
+/* السهم المتحرك */
+.arrow-wrapper {
+  position: absolute;
+  top: 38px;
+}
+
+.arrow-wrapper i {
+  font-size: 2.1rem !important;
+  color: #edcea0;
+  filter: drop-shadow(0 0 8px rgba(237, 206, 160, 0.6));
+}
+
+/* صناديق الحالات الموحدة النظيفة بدون تداخل */
+.qibla-status-box {
+  padding: 12px 18px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  background: rgba(33, 33, 29, 0.7);
+  border: 1px solid rgba(237, 206, 160, 0.2);
+}
+
+.qibla-status-box.normal {
+  color: #d1d5db;
+}
+
+.qibla-status-box.warning {
+  background: rgba(220, 53, 69, 0.12);
+  border-color: rgba(220, 53, 69, 0.4);
+  color: #f8d7da;
+}
+
+.qibla-status-box.success {
+  background: rgba(46, 204, 113, 0.12);
+  border-color: rgba(46, 204, 113, 0.4);
+  color: #d1f7c4;
+}
+
+/* تخصيص نص الآيات القرآنية ليكون فخماً وواضحاً */
+.ayah-text {
+  font-family: 'Amiri', 'Traditional Arabic', serif;
+  font-size: 1.6rem !important;
+  line-height: 2.6 !important;
+  color: #f8f9fa;
+  text-align: justify;
+  text-align: start !important; /* لضمان توسيص النص تماماً */
+}
+#ayahs-container {
+  margin-top: -6rem;
+  background-color: #21211D !important; /* لون أسود مطفأ وأعمق، أو فيك تحطه #1a1a17 لدرجة أفتح شوي */
+  border: 1px solid rgba(237, 206, 160, 0.3) !important; /* لون الحدود الذهبية الخفيفة */
+}
+
+/* ===== ميزات التسكين الذكي وغرف الفنادق ===== */
+.room-card {
+  background-color: #262621;
+  border: 1px solid rgba(237, 206, 160, 0.2);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+.room-card:hover {
+  border-color: var(--gold-accent, #edcea0);
+  box-shadow: 0 4px 15px rgba(237, 206, 160, 0.1);
+}
+.room-badge {
+  background-color: rgba(237, 206, 160, 0.15);
+  color: var(--gold-accent, #edcea0);
+  border: 1px solid rgba(237, 206, 160, 0.3);
+  font-size: 0.75rem;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+.unassigned-pilgrim-pill {
+  background-color: #1b1b18;
+  border: 1px dashed rgba(237, 206, 160, 0.3);
+  color: #d3d3c7;
+  font-size: 0.85rem;
+  padding: 6px 12px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.2s ease;
+}
+.unassigned-pilgrim-pill:hover {
+  background-color: rgba(237, 206, 160, 0.08);
+  color: #fff;
+}
+
+/* ===== سجل الحضور اللحظي المرئي وأشرطة التقدم ===== */
+.attendance-progress-wrap {
+  background-color: #1b1b18;
+  border: 1px solid rgba(237, 206, 160, 0.25);
+  border-radius: 14px;
+  padding: 1.25rem;
+}
+.progress-bar-custom {
+  background-color: #21211d;
+  border-radius: 10px;
+  overflow: hidden;
+  height: 12px;
+  border: 1px solid rgba(237, 206, 160, 0.15);
+}
+.progress-fill-gold {
+  background: linear-gradient(90deg, #c5a059, #edcea0);
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.bus-chart-item {
+  background-color: #262621;
+  border: 1px solid rgba(237, 206, 160, 0.15);
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin-bottom: 8px;
+}

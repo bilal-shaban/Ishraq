@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-bs-theme="dark">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>تسجيل الحضور — المشرف</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#21211D">
+<style>
+body{background:#21211d;font-family:'Tajawal',sans-serif}
+.box{background:#1b1b18;border:1px solid rgba(237,206,160,.25);border-radius:16px;padding:1.1rem}
+.gold{color:#edcea0}
+.u-in{background:#21211d!important;border:1px solid rgba(237,206,160,.3)!important;color:#f8f9fa!important}
+.btn-gold{background:#edcea0;color:#21211d;font-weight:700;border:0}
+.btn-gold:hover{background:#e3c088;color:#21211d}
+#reader{border-radius:14px;overflow:hidden}
+#res{min-height:120px;border-radius:14px;display:grid;place-items:center;text-align:center;padding:1rem;font-weight:700;font-size:1.3rem;background:#21211d;border:1px dashed rgba(237,206,160,.3);color:#d3d3c7}
+#res.ok{background:#14532d;border:0;color:#fff}
+#res.dup{background:#7a5b00;border:0;color:#fff}
+#res.bad{background:#7f1d1d;border:0;color:#fff}
+#res small{font-weight:400;opacity:.85}
+</style>
+</head>
+<body>
+<main class="container py-4" style="max-width:560px">
+  <h1 class="gold fw-bold h4 text-center mb-3">تسجيل حضور الباص</h1>
+
+  <div class="box mb-3">
+    <input id="key" type="password" class="form-control u-in mb-2" placeholder="رمز المشرف" autocomplete="off">
+    <select id="labelSel" class="form-select u-in mb-2" aria-label="الباص أو النشاط"></select>
+    <div id="busMsg" class="small mb-2" style="color:#d3d3c7"></div>
+    <button id="go" class="btn btn-gold w-100">بدء المسح</button>
+  </div>
+
+  <div id="reader" class="mb-3 d-none"></div>
+  <div id="res">وجّه الكاميرا نحو رمز المعتمر بعد بدء المسح</div>
+  <div class="text-center mt-3 gold">تم تسجيل: <span id="cnt" class="fw-bold">0</span></div>
+
+  <div id="listBox" class="box mt-3 d-none">
+    <div class="d-flex justify-content-between align-items-center mb-2">
+      <b class="gold">المسجّلون في هذا الباص</b>
+      <button id="clr" type="button" class="btn btn-sm btn-outline-danger">🗑️ مسح جميع الحضور</button>
+    </div>
+    <ol id="lst" class="mb-0 small"></ol>
+  </div>
+  <div id="acts" class="d-grid gap-2 mt-3 d-none">
+    <button id="fin" type="button" class="btn btn-gold">حفظ وإنهاء المسح</button>
+    <div class="row g-2"><div class="col-6"><button id="pdf" type="button" class="btn btn-outline-light w-100">تقرير PDF</button></div>
+      <div class="col-6"><button id="csv" type="button" class="btn btn-outline-light w-100">تقرير CSV</button></div></div>
+  </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+<script>
+const API = 'https://script.google.com/macros/s/AKfycbxBSrv8Rwlre9Vy3LQguKKwsOfpFSKYPpKd5HYlyoSJwijtF6cyGFm2nGnbva7bcceKLg/exec';
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const show = (cls, html) => { $('res').className = cls; $('res').innerHTML = html; };
+const call = body => fetch(API, { method: 'POST', body: JSON.stringify(body) }).then(r => r.json());
+
+$('key').value = sessionStorage.getItem('sup_key') || '';
+/* ---------- الباص: قائمة مرتبطة بالباصات المدخلة في لوحة المشرف ---------- */
+let buses = []; try { buses = JSON.parse(localStorage.getItem('sup_buses')) || []; } catch {}
+const busLabel = b => 'باص ' + b.no + (b.title ? ' — ' + b.title : '');
+const getLabel = () => $('labelSel').value.trim();
+const busMsg = (t, cls = '') => { $('busMsg').className = 'small mb-2 ' + cls; $('busMsg').textContent = t; };
+function paintLabels(want) {
+  want = want ?? getLabel();
+  const names = buses.map(busLabel);
+  $('labelSel').innerHTML = `<option value="">${names.length ? '— اختر الباص —' : '— لا توجد باصات —'}</option>`
+    + names.map(n => `<option value="${esc(n)}"${n === want ? ' selected' : ''}>${esc(n)}</option>`).join('');
+}
+let loadSeq = 0;
+async function loadBuses() {
+  const k = $('key').value.trim(), seq = ++loadSeq;
+  if (!k) return busMsg('أدخل رمز المشرف لتحميل الباصات');
+  busMsg('جارٍ تحميل الباصات...');
+  try {
+    const r = await call({ action: 'scan_opts', key: k });
+    if (seq !== loadSeq) return; // نتيجة قديمة
+    if (r.ok) {
+      buses = r.buses || []; localStorage.setItem('sup_buses', JSON.stringify(buses)); paintLabels(); loadList();
+      return buses.length ? busMsg('') : busMsg('لم تُضَف باصات بعد: أضفها من لوحة المشرف ← تبويب «الباصات».', 'text-warning');
+    }
+    // فشل: نميّز بين رمز خاطئ ونشر قديم للخادم (إجراء verify موجود في كل النسخ)
+    const v = await call({ action: 'verify', key: k });
+    if (seq !== loadSeq) return;
+    busMsg(v.ok ? 'الخادم لا يدعم قائمة الباصات: انشر Code.gs بنسخة جديدة (Deploy ← Manage deployments ← Edit ← New version).' : 'رمز المشرف غير صحيح', 'text-danger');
+  } catch { if (seq === loadSeq) busMsg(buses.length ? 'بلا اتصال — تُعرض آخر قائمة محفوظة' : 'تعذّر الاتصال، حاول مرة أخرى', 'text-warning'); }
+}
+paintLabels(localStorage.getItem('sup_label') || '');
+let keyTimer = 0;
+$('key').oninput = () => { clearTimeout(keyTimer); keyTimer = setTimeout(loadBuses, 600); }; // بلا حاجة لمغادرة الخانة
+$('key').onchange = loadBuses;
+$('labelSel').onchange = loadList;
+loadBuses();
+
+let scanner = null, busy = false, last = '', lastAt = 0, list = [];
+
+/* ---------- قائمة المسجّلين (محفوظة لكل نشاط) ---------- */
+const lk = () => 'scanlist:' + getLabel();
+function renderList() {
+  $('lst').innerHTML = list.map(x => `<li class="mb-1">${esc(x.name)} <span class="text-secondary">(${esc(x.no)})</span>
+    <button type="button" class="btn btn-sm btn-outline-danger py-0 me-1" data-rm="${esc(x.no)}" data-name="${esc(x.name)}">إزالة</button></li>`).join('');
+  $('cnt').textContent = list.length;
+  $('listBox').classList.toggle('d-none', !list.length);
+  $('acts').classList.toggle('d-none', !list.length);
+}
+const splitTime = t => { t = String(t || ''); return /^\d{4}-\d\d-\d\d/.test(t) ? { date: t.slice(0, 10), time: t.slice(11, 16) } : { date: '', time: t }; };
+const nowHM = () => new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Riyadh' });
+// القائمة تُقرأ من الشيت (نفس ما يراه تبويب الحضور)، والنسخة المحلية للعمل دون اتصال فقط
+async function syncList() {
+  const key = $('key').value.trim(), label = getLabel();
+  if (!key || !label) return false;
+  try {
+    const r = await call({ action: 'scan_list', key, label });
+    if (!r.ok || label !== getLabel()) return false;
+    list = r.items.map(x => ({ no: x.no, name: x.name, ...splitTime(x.time) }));
+    localStorage.setItem(lk(), JSON.stringify(list)); renderList(); return true;
+  } catch { return false; }
+}
+function loadList() { try { list = JSON.parse(localStorage.getItem(lk())) || []; } catch { list = []; } renderList(); syncList(); }
+function addToList(no, name) {
+  if (list.some(x => x.no === no)) return;
+  list.push({ no, name, date: new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Riyadh' }), time: nowHM() });
+  localStorage.setItem(lk(), JSON.stringify(list)); renderList();
+}
+$('clr').onclick = async () => {
+  const label = getLabel(), key = $('key').value.trim();
+  if (!label || !key) return show('bad', 'أدخل رمز المشرف واختر الباص أولًا');
+  if (!confirm(`مسح جميع الحضور المسجَّل في «${label}»؟ سيُحذف من تبويب الحضور أيضًا ولا يمكن التراجع.`)) return;
+  try {
+    const r = await call({ action: 'scan_remove', key, label, all: true });
+    if (!r.ok) return show('bad', r.error === 'key' ? '🔒 رمز المشرف غير صحيح' : '❌ تعذّر المسح — إن تكرر ذلك انشر Code.gs بنسخة جديدة');
+    list = []; localStorage.removeItem(lk()); renderList(); last = '';
+    show('dup', `🗑️ مُسح حضور «${esc(label)}» (${r.removed ?? 0})`);
+  } catch { show('bad', '📶 تعذّر الاتصال — لم يتم المسح'); }
+};
+loadList();
+
+/* ---------- إزالة صاعد سُجِّل بالخطأ ---------- */
+const rmBtn = (no, name) => `<br><button type="button" class="btn btn-sm btn-light mt-2" data-rm="${esc(no)}" data-name="${esc(name)}">إزالة من الباص</button>`;
+async function removeOne(no, name) {
+  const label = getLabel(), key = $('key').value.trim();
+  if (!label || !key) return show('bad', 'أدخل رمز المشرف واختر الباص أولًا');
+  if (!confirm(`إزالة ${name} من «${label}»؟`)) return;
+  try {
+    const r = await call({ action: 'scan_remove', key, label, pilgrimNo: no });
+    if (!r.ok) return show('bad', r.error === 'key' ? '🔒 رمز المشرف غير صحيح' : '❌ تعذّرت الإزالة — إن تكرر ذلك انشر Code.gs بنسخة جديدة');
+    list = list.filter(x => x.no !== no); localStorage.setItem(lk(), JSON.stringify(list)); renderList();
+    last = ''; show('dup', `🗑️ أُزيل ${esc(name)} من «${esc(label)}»`);
+  } catch { show('bad', '📶 تعذّر الاتصال — لم تتم الإزالة'); }
+}
+document.addEventListener('click', e => { const b = e.target.closest('[data-rm]'); if (b) removeOne(b.dataset.rm, b.dataset.name); });
+
+/* ---------- المسح ---------- */
+async function onScan(text) {
+  const now = Date.now();
+  if (busy || (text === last && now - lastAt < 4000)) return; // تجاهل التكرار السريع لنفس الرمز
+  last = text; lastAt = now;
+  if (!/^UMRAH:/i.test(text)) return show('bad', '❌ رمز غير صالح');
+  busy = true; navigator.vibrate?.(80);
+  const label = getLabel();
+  try {
+    const r = await call({ action: 'checkin', key: $('key').value.trim(), label, pilgrimNo: text.slice(6) });
+    if (!r.ok) show('bad', r.error === 'key' ? '🔒 رمز المشرف غير صحيح' : r.error === 'notfound' ? '❌ معتمر غير موجود' : '❌ تعذّر التسجيل');
+    else if (r.dup) { addToList(r.pilgrimNo, r.name); show('dup', `⚠️ ${esc(r.name)}<br><small>مسجّل مسبقًا في «${esc(label)}»</small>${rmBtn(r.pilgrimNo, r.name)}`); }
+    else { addToList(r.pilgrimNo, r.name); show('ok', `✅ ${esc(r.name)}<br><small>رقم ${esc(r.pilgrimNo)}</small>${rmBtn(r.pilgrimNo, r.name)}`); }
+  } catch {
+    show('bad', '📶 تعذّر الاتصال — أعد المسح'); last = '';
+  } finally { busy = false; syncList(); }
+}
+async function stopScan() {
+  if (!scanner) return;
+  await scanner.stop().catch(() => {}); scanner = null;
+  $('reader').classList.add('d-none'); $('go').textContent = 'بدء المسح';
+}
+$('go').onclick = async () => {
+  if (scanner) return stopScan();
+  if (!$('key').value.trim()) return show('bad', 'أدخل رمز المشرف أولًا');
+  if (!getLabel()) { await loadBuses(); if (!getLabel()) return show('bad', 'اختر الباص من القائمة أولًا'); }
+  // التحقق من رمز المشرف على الخادم قبل تشغيل الكاميرا
+  $('go').disabled = true; show('', 'جارٍ التحقق من الرمز...');
+  try {
+    const v = await call({ action: 'verify', key: $('key').value.trim() });
+    if (!v.ok) { sessionStorage.removeItem('sup_key'); return show('bad', '🔒 رمز المشرف غير صحيح'); }
+  } catch { return show('bad', '📶 تعذّر الاتصال، حاول مرة أخرى'); }
+  finally { $('go').disabled = false; }
+  sessionStorage.setItem('sup_key', $('key').value.trim());
+  localStorage.setItem('sup_label', getLabel());
+  loadList();
+  $('reader').classList.remove('d-none');
+  scanner = new Html5Qrcode('reader');
+  try {
+    await scanner.start({ facingMode: 'environment' }, { fps: 10, qrbox: { width: 240, height: 240 } }, onScan, () => {});
+    $('go').textContent = 'إيقاف المسح'; show('', 'وجّه الكاميرا نحو رمز المعتمر');
+  } catch {
+    scanner = null; $('reader').classList.add('d-none');
+    show('bad', 'تعذّر تشغيل الكاميرا — اسمح بالوصول إليها (الصفحة تتطلب HTTPS)');
+  }
+};
+
+/* ---------- حفظ وإنهاء المسح + تقارير PDF و CSV ---------- */
+// كل مسحة تُحفظ في الشيت فورًا؛ هذا الزر يوقف الكاميرا ويتأكد أن ما سُجّل ظاهر في تبويب الحضور
+$('fin').onclick = async () => {
+  const b = $('fin'); b.disabled = true;
+  try {
+    await stopScan();
+    if (!(await syncList())) return show('bad', '📶 تعذّر التأكد من الحفظ — تأكد من الاتصال وأعد الضغط');
+    show('ok', `✅ تم حفظ ${list.length} معتمر<br><small>«${esc(getLabel())}» — ظاهرون الآن في تبويب الحضور بلوحة المشرف</small>`);
+  } finally { b.disabled = false; }
+};
+$('pdf').onclick = async () => {
+  const b = $('pdf'); b.disabled = true;
+  try { await stopScan(); await syncList(); await makePdf(); show('ok', '✅ تم إنشاء التقرير'); }
+  catch { show('bad', '❌ تعذّر إنشاء التقرير'); }
+  finally { b.disabled = false; }
+};
+$('csv').onclick = async () => {
+  await stopScan(); await syncList();
+  const q = v => '"' + String(v ?? '').replace(/"/g, '""') + '"', label = getLabel();
+  const lines = [['#', 'رقم المعتمر', 'الاسم', 'التاريخ', 'وقت المسح', 'الباص'], ...list.map((x, i) => [i + 1, x.no, x.name, x.date || '', x.time || '', label])];
+  const blob = new Blob(['\ufeff' + lines.map(l => l.map(q).join(',')).join('\r\n')], { type: 'text/csv;charset=utf-8' });
+  const url = URL.createObjectURL(blob), a = document.createElement('a');
+  a.href = url; a.download = 'attendance-' + new Date().toISOString().slice(0, 16).replace(/[:T]/g, '-') + '.csv';
+  document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 4000);
+  show('ok', '✅ تم إنشاء ملف CSV');
+};
+async function makePdf() {
+  try { await Promise.all([document.fonts.load('700 30px Tajawal'), document.fonts.load('400 22px Tajawal')]); } catch {}
+  const W = 794, H = 1123, S = 2, M = 50, RH = 44, FF = 'Tajawal, sans-serif';
+  const label = getLabel(), now = new Date();
+  const when = now.toLocaleString('ar-SA-u-ca-gregory', { dateStyle: 'full', timeStyle: 'short', timeZone: 'Asia/Riyadh' });
+  const topFirst = 300, topNext = 90, bottom = 70;
+  const capFirst = Math.floor((H - topFirst - RH - bottom) / RH), capNext = Math.floor((H - topNext - RH - bottom) / RH);
+  const pagesN = list.length <= capFirst ? 1 : 1 + Math.ceil((list.length - capFirst) / capNext);
+  const doc = new window.jspdf.jsPDF({ unit: 'mm', format: 'a4', compress: true });
+  let idx = 0;
+  for (let p = 0; p < pagesN; p++) {
+    const c = document.createElement('canvas'); c.width = W * S; c.height = H * S;
+    const x = c.getContext('2d'); x.scale(S, S); x.direction = 'rtl'; x.textBaseline = 'middle';
+    x.fillStyle = '#fff'; x.fillRect(0, 0, W, H);
+    const txt = (s, px, py, size, weight, color, align) => { x.font = `${weight} ${size}px ${FF}`; x.fillStyle = color; x.textAlign = align; x.fillText(s, px, py); };
+    const fit = (s, w) => { if (x.measureText(s).width <= w) return s; while (s.length > 1 && x.measureText(s + '…').width > w) s = s.slice(0, -1); return s + '…'; };
+    x.fillStyle = '#21211d'; x.fillRect(0, 0, W, 14); x.fillStyle = '#edcea0'; x.fillRect(0, 14, W, 4);
+    let y;
+    if (p === 0) {
+      txt('تقرير حضور', W / 2, 80, 36, 700, '#21211d', 'center');
+      txt('حملة الإشراق', W / 2, 122, 22, 400, '#8a6d2f', 'center');
+      x.font = `700 24px ${FF}`;
+      txt(fit('النشاط / الباص:  ' + label, W - 2 * M), W - M, 175, 24, 700, '#21211d', 'right');
+      txt('التاريخ:  ' + when, W - M, 212, 20, 400, '#444', 'right');
+      txt('عدد المسجّلين:  ' + list.length, W - M, 246, 20, 400, '#444', 'right');
+      y = topFirst;
+    } else y = topNext;
+    // رأس الجدول — حدود الأعمدة من اليمين: 744 | 684 | 354 | 224 | 50
+    x.fillStyle = '#edcea0'; x.fillRect(M, y, W - 2 * M, RH);
+    txt('#', 714, y + RH / 2, 20, 700, '#21211d', 'center');
+    txt('اسم المعتمر', 674, y + RH / 2, 20, 700, '#21211d', 'right');
+    txt('رقم المعتمر', 289, y + RH / 2, 20, 700, '#21211d', 'center');
+    txt('وقت المسح', 137, y + RH / 2, 20, 700, '#21211d', 'center');
+    const cap = p === 0 ? capFirst : capNext;
+    for (let i = 0; i < cap && idx < list.length; i++, idx++) {
+      const it = list[idx], ry = y + RH * (i + 1), cy = ry + RH / 2;
+      x.fillStyle = i % 2 ? '#fff' : '#f7f2e6'; x.fillRect(M, ry, W - 2 * M, RH);
+      x.fillStyle = '#e4dcc6'; x.fillRect(M, ry + RH - 1, W - 2 * M, 1);
+      txt(String(idx + 1), 714, cy, 18, 400, '#444', 'center');
+      x.font = `400 20px ${FF}`;
+      txt(fit(it.name, 320), 674, cy, 20, 400, '#21211d', 'right');
+      txt(String(it.no), 289, cy, 18, 400, '#21211d', 'center');
+      txt(it.time || '', 137, cy, 18, 400, '#21211d', 'center');
+    }
+    txt(`صفحة ${p + 1} من ${pagesN}`, W / 2, H - 35, 16, 400, '#888', 'center');
+    if (p) doc.addPage();
+    doc.addImage(c.toDataURL('image/jpeg', 0.92), 'JPEG', 0, 0, 210, 297);
+  }
+  doc.save('attendance-' + now.toISOString().slice(0, 16).replace(/[:T]/g, '-') + '.pdf');
+}
+</script>
+</body>
+</html>

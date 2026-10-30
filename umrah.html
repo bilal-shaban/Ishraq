@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-bs-theme="dark">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>معتمرو حملة الإشراق</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&family=Amiri+Quran&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="./style.css">
+<meta name="theme-color" content="#21211D">
+<style>
+.u-banner{background:#edcea0;color:#21211d;font-weight:700;padding:.6rem 1rem;text-align:center;position:sticky;top:0;z-index:1100}
+.u-top{border-bottom:.2rem solid #edcea0;background:#21211d}
+.u-box{background:#1b1b18;border:1px solid rgba(237,206,160,.25);border-radius:16px;padding:1.25rem}
+.u-box h2{color:#edcea0;font-size:1.15rem;font-weight:700;margin-bottom:1rem}
+.u-next{background:linear-gradient(160deg,#2c2a22,#1b1b18);border-color:#edcea0}
+.ev{display:flex;gap:.9rem;background:#21211d;border:1px solid rgba(237,206,160,.18);border-radius:14px;padding:1rem;margin-bottom:.8rem;border-inline-start:4px solid #edcea0}
+.ev .ic{width:44px;height:44px;border-radius:50%;background:rgba(237,206,160,.12);color:#edcea0;display:grid;place-items:center;font-size:1.3rem;flex-shrink:0}
+.ev small{color:#d3d3c7}.ev .note{color:#d3d3c7;font-size:.88rem;border-top:1px dashed rgba(237,206,160,.2);margin-top:.5rem;padding-top:.5rem}
+.ev .acts{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.7rem}
+.ticket{background:#edcea0;color:#21211d;border-radius:16px;position:relative;overflow:hidden}
+.ticket .head{padding:1rem 1.25rem}.ticket .no{font-size:2rem;font-weight:700;line-height:1}
+.ticket .perf{border-top:2px dashed rgba(33,33,29,.4);margin:0 1rem}
+.ticket .body{padding:1rem 1.25rem;background:#f6e6c8}
+.ticket .body b{display:block;font-size:.8rem;opacity:.7}.ticket .body p{margin:0 0 .7rem}
+.stars button{background:none;border:0;font-size:2.1rem;color:#4a4a42;padding:0 .15rem;transition:transform .15s}
+.stars button.on{color:#edcea0}.stars button:active{transform:scale(1.25)}
+.nav-pills .nav-link{color:#edcea0;background:rgba(237,206,160,.08)}.nav-pills .nav-link.active{background:#edcea0;color:#21211d}
+.tab-off{display:none!important}
+#app.role-sheikh>:not(#sheikhBox){display:none!important}
+.chip{display:inline-block;background:rgba(237,206,160,.14);color:#edcea0;border-radius:999px;padding:.05rem .6rem;font-size:.78rem}
+#tabs .nav-link{white-space:nowrap;padding:.4rem .85rem;font-size:.9rem}
+.u-in{background:#21211d!important;border:1px solid rgba(237,206,160,.3)!important;color:#f8f9fa!important}
+.u-in:focus{box-shadow:0 0 0 .2rem rgba(237,206,160,.25)!important}
+</style>
+</head>
+<body style="font-family:'Tajawal',sans-serif">
+<div id="banner" class="u-banner d-none"></div>
+<header class="u-top py-2"><div class="container d-flex align-items-center justify-content-between">
+  <a href="./index.html"><img src="./5b862b4281f64fd884b11984846f0e97.png" width="64" alt="إشراق"></a>
+  <a href="./index.html" class="btn btn-gold-outline btn-sm rounded-pill"><i class="bi bi-house-door ms-1"></i>الرئيسية</a>
+</div></header>
+
+<main class="container py-4" style="max-width:760px">
+  <div class="text-center mb-4">
+    <h1 class="gold fw-bold h3">أهلًا بمعتمري حملة الإشراق</h1>
+    <p class="desc-text mb-0">تابع رحلتك الإيمانية معنا، وسجّل برقمك للدخول إلى بياناتك.</p>
+  </div>
+
+  <!-- يظهر دائمًا: الدخول وبطاقة المعتمر -->
+  <section class="u-box mb-3" id="pilgrimBox">
+    <h2><i class="bi bi-person-badge ms-2"></i><span id="boxTitle">بطاقة المعتمر</span></h2>
+    <form id="loginForm">
+      <div class="d-flex gap-2 flex-wrap">
+        <input id="code" class="form-control u-in" style="flex:2 1 11rem" placeholder="الرقم السري الذي زوّدتك به الحملة" autocomplete="off" autocapitalize="characters" required>
+        <button class="btn btn-gold-solid px-4">دخول</button>
+      </div>
+      <small class="d-block mt-2" style="color:#d3d3c7">أدخل الرقم السري الذي زوّدتك به الحملة. بعد 5 محاولات خاطئة يُوقَف الدخول من الجهاز ولا يعود إلا بتفعيل من المشرف.</small>
+    </form>
+    <div id="loginMsg" class="small text-danger mt-2"></div>
+    <div id="ticket"></div>
+  </section>
+  
+  <!-- لا يظهر إلا بعد إدخال رقم معتمر صحيح -->
+  <div id="app" class="d-none">
+    <section id="sheikhBox" class="u-box mb-3 d-none"><h2><i class="bi bi-book ms-2"></i>لوحة الشيخ</h2><div id="sh"></div></section>
+    <section id="adminBox" class="u-box mb-3 d-none"><h2><i class="bi bi-speedometer2 ms-2"></i>لوحة المشرف</h2><div id="adm"></div></section>
+    <section id="lostBox" class="u-box mb-3 d-none" style="border-color:#dc3545"></section>
+    <div id="notifyBar" class="text-center mb-3 d-none"><button type="button" id="notifyBtn" class="btn btn-sm btn-gold-outline rounded-pill"><i class="bi bi-bell ms-1"></i>تفعيل تنبيهات التعديلات</button></div>
+
+    <section class="u-box u-next mb-3" id="nextBox">
+      <h2><i class="bi bi-alarm ms-2"></i>النشاط القادم</h2>
+      <div id="nextTitle" class="h5 text-light mb-2">جارٍ التحميل...</div>
+      <div class="countdown-box d-inline-flex gap-2 p-2 rounded" dir="ltr">
+        <div class="time-unit"><span id="cdD" class="time-num">00</span><span class="time-label">يوم</span></div><span class="time-colon">:</span>
+        <div class="time-unit"><span id="cdH" class="time-num">00</span><span class="time-label">ساعة</span></div><span class="time-colon">:</span>
+        <div class="time-unit"><span id="cdM" class="time-num">00</span><span class="time-label">دقيقة</span></div><span class="time-colon">:</span>
+        <div class="time-unit"><span id="cdS" class="time-num">00</span><span class="time-label">ثانية</span></div>
+      </div>
+    </section>
+
+    <!-- علامات التبويب (للمعتمر فقط) -->
+    <div id="tabsBar" class="d-none"><ul class="nav nav-pills flex-nowrap gap-1 mb-3" id="tabs" style="overflow-x:auto;padding-bottom:.25rem"></ul></div>
+
+    <section id="busBox" class="u-box mb-3 d-none" data-sec="bus"></section>
+    <section id="mySupBox" class="u-box mb-3 d-none" data-sec="sup"></section>
+    <section id="hotelBox" class="u-box mb-3 d-none" data-sec="hotel"></section>
+
+    <section class="mb-3" data-sec="prog"><h2 class="gold h5 fw-bold mb-3"><i class="bi bi-calendar-event ms-2"></i>برنامج الرحلة</h2><div id="events"></div></section>
+    <section id="doneBox" class="mb-3 d-none" data-sec="prog"></section>
+
+    <section class="u-box mb-3" id="askBox" data-sec="ask">
+      <h2><i class="bi bi-chat-dots ms-2"></i>ملاحظات واستفسارات</h2>
+      <form id="askForm">
+        <div class="row g-2 mb-2 who"></div>
+        <textarea id="askMsg" class="form-control u-in mb-2" rows="3" placeholder="اكتب ملاحظتك أو استفسارك" required></textarea>
+        <button class="btn btn-gold-solid w-100">إرسال</button>
+      </form>
+      <div id="myInq"></div>
+    </section>
+
+    <section class="u-box mb-3" id="fatwaBox" data-sec="fatwa"></section>
+
+    <section class="u-box mb-5" id="rateBox" data-sec="rate">
+      <h2><i class="bi bi-star ms-2"></i>قيّم رحلتك</h2>
+      <div class="stars text-center" id="stars" dir="ltr"></div>
+      <div id="starText" class="text-center gold mb-3" style="min-height:1.6rem"></div>
+      <form id="rateForm">
+        <div class="row g-2 mb-2 who"></div>
+        <textarea id="rateMsg" class="form-control u-in mb-2" rows="2" placeholder="رسالة اختيارية"></textarea>
+        <button class="btn btn-gold-solid w-100">إرسال التقييم</button>
+      </form>
+    </section>
+  </div>
+</main>
+
+<!-- نافذة التأكيد -->
+<div class="modal fade" id="cfm" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content" style="background:#1b1b18;border:1px solid rgba(237,206,160,.3);border-radius:16px">
+      <div class="modal-body text-center p-4">
+        <i class="bi bi-exclamation-triangle-fill text-danger" style="font-size:2.6rem"></i>
+        <h5 id="cfmT" class="mt-2 text-light"></h5>
+        <p id="cfmB" class="desc-text"></p>
+        <div class="d-flex gap-2">
+          <button type="button" class="btn btn-danger fw-bold flex-grow-1" id="cfmY"></button>
+          <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">إلغاء</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="position-fixed start-50 translate-middle-x bottom-0 mb-4 px-4 py-2 rounded-pill d-none text-center" style="background:#edcea0;color:#21211d;z-index:2000;max-width:92vw"></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
+<script src="./umrah.js"></script>
+<script src="./admin.js"></script>
+<script src="./sheikh.js"></script>
+</body>
+</html>
