@@ -519,6 +519,9 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => drawDuaImage(text), 150);
   }
 
-  renderTabs();
-  renderCategory();
+  // الصفحة الرئيسية لا تحتوي تبويبات الأدعية، فلا حاجة للرسم هناك
+  if (tabsBar && container) {
+    renderTabs();
+    renderCategory();
+  }
 });
