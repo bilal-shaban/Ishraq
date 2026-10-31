@@ -89,8 +89,10 @@ body.ix{
 .ix .ix-go{display:inline-flex;align-items:center;gap:10px;font-family:"Reem Kufi",Cairo,sans-serif;font-weight:700;color:#0b0b0c;padding:10px 22px;
   background:linear-gradient(135deg,#ecc977,#d6ac52 55%,#b88f3a);clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px))}
   .si{
-    color: #b88f3a;
-    font-size: 0.6rem;
+    color: #ecc977 ;
+    font-size: 0.75rem;
+    text-decoration: none;
+    font-family:"Reem Kufi",Cairo,sans-serif;
   }
 .ix .ix-go i{transition:transform .35s var(--ease)}
 .ix .ix-umrah:hover .ix-go i{transform:translateX(-6px)}
