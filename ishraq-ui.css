@@ -178,7 +178,7 @@ body.ix{
 
 /* ---------- الشريط السفلي (موبايل) ---------- */
 .ix .bottom-nav{position:fixed;right:12px;left:12px;bottom:calc(10px + env(safe-area-inset-bottom,0px));top:auto;z-index:1050;
-  background:#131315e6;-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border:1px solid #d6ac5240;box-shadow:0 14px 40px #000b;padding:0;
+  background:#131315e6;-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border:2px solid #d6ac5240;box-shadow:0 14px 40px #000b;padding:0;
   clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px))}
 .ix .bottom-nav .container{padding:0 6px!important}
 .ix .nav-item-bottom{flex:1;color:var(--m)!important;padding:9px 2px 7px!important;position:relative;transition:color .3s;transform:none!important}
