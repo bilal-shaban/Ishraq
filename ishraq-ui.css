@@ -35,7 +35,7 @@ body.ix{
 .ix .ix-top{position:sticky;top:0;z-index:1040;background:#0b0b0cd9;-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--c3)}
 .ix .ix-top::after{content:"";position:absolute;right:0;left:0;bottom:-1px;height:1px;background:linear-gradient(90deg,transparent,var(--a),transparent);opacity:.55}
 .ix .ix-top .in{display:flex;align-items:center;gap:10px;height:62px}
-.ix .ix-top .logo img{height:44px;width:auto;display:block}
+.ix .ix-top .logo img{height:85px;width:auto;display:block; margin-top: 2.5rem;}
 .ix .ix-top .sp{flex:1}
 .ix .ix-links{display:none;gap:4px}
 .ix .ix-links a{padding:6px 12px;color:var(--m);text-decoration:none;font-size:.92rem;position:relative;transition:color .3s}
