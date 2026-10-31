@@ -378,7 +378,7 @@ body.ix {
 }
 .si{
 color: #b88f3a;
-font-size: 0.5rem;
+font-size: 0.6rem;
 }
 .ix .ix-go i {
   transition: transform 0.35s var(--ease);
