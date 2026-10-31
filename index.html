@@ -15,6 +15,10 @@
     <link rel="manifest" href="./manifest.json" />
     <meta name="theme-color" content="#0b0b0c" />
     <link rel="icon" href="data:," />
+      <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
     <style>
       body.auth-pending {
         visibility: hidden;
@@ -58,7 +62,7 @@
             <p>بطاقتك الخاصة، برنامج الرحلة، تقييمك واستفساراتك، كلها بمكان واحد.</p>
             <div class="d-flex justify-content-between">
               <span class="ix-go">ادخل إلى رحلتك <i class="bi bi-arrow-left"></i></span>
-              <a href="./Ibrahim-alamary-main/index.html" class="si mt-5 link-offset-3 "> احجز مقعدك الآن</a>
+              <a href="./Ibrahim-alamary-main/index.html" class="si mt-5 link-offset-3 animate__animated animate__pulse animate__infinite "> احجز مقعدك الآن</a>
               
             <!-- <a class="btn ix-go " href="https://alishraq-campaign.github.io/Ibrahim-alamary/">سجل الآن<a> -->
             </div>
@@ -143,9 +147,9 @@
         <div class="ix-snap rv">
           <div id="quran-card" class="ix-card">
             <div class="ix-kicker"><i class="bi bi-book"></i>إشراقة قرآنيّة</div>
-            <p class="ix-verse"><span id="quran-text">"الَّذِينَ آمَنُوا وَتَطْمَئِنُّ قُلُوبُهُم بِذِكْرِ اللَّهِ ۗ أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ"</span></p>
-            <span id="quran-ref" class="ix-ref">سورة الرعد - الآية 28</span>
-            <p id="quran-desc" class="ix-note">بالذِّكرِ تَسكُنُ النُّفوسُ وتَزولُ الهُموم.</p>
+            <p class="ix-verse"><span id="quran-text">...</span></p>
+            <span id="quran-ref" class="ix-ref">...</span>
+            <p id="quran-desc" class="ix-note">...</p>
             <div class="ix-acts">
               <button onclick="copyContent('quran')" class="btn btn-gold-outline btn-sm px-3" title="نسخ النص"><i class="bi bi-copy me-1"></i> نسخ</button>
               <button onclick="shareWhatsapp('quran')" class="btn btn-gold-solid btn-sm px-3" title="مشاركة عبر واتساب"><i class="bi bi-whatsapp me-1"></i> مشاركة</button>
@@ -154,9 +158,9 @@
 
           <div id="hadith-card" class="ix-card">
             <div class="ix-kicker"><i class="bi bi-chat-quote"></i>إشراقة نبويّة</div>
-            <p class="ix-verse"><span id="hadith-text">"أَقْرَبُ مَا يَكُونُ الْعَبْدُ مِنْ رَبِّهِ وَهُوَ سَاجِدٌ"</span></p>
-            <span id="hadith-ref" class="ix-ref">أخرجه الإمام مسلم في صحيحه (رقم 482)</span>
-            <p id="hadith-desc" class="ix-note">انْكِسَارُكَ فِي السُّجُودِ هُوَ أَعْلَى مَقَامَاتِ قُرْبِك.</p>
+            <p class="ix-verse"><span id="hadith-text">...</span></p>
+            <span id="hadith-ref" class="ix-ref">...</span>
+            <p id="hadith-desc" class="ix-note">...</p>
             <div class="ix-acts">
               <button onclick="copyContent('hadith')" class="btn btn-gold-outline btn-sm px-3" title="نسخ النص"><i class="bi bi-copy me-1"></i> نسخ</button>
               <button onclick="shareWhatsapp('hadith')" class="btn btn-gold-solid btn-sm px-3" title="مشاركة عبر واتساب"><i class="bi bi-whatsapp me-1"></i> مشاركة</button>
@@ -254,7 +258,7 @@
 
     <!-- الشريط السفلي -->
     <nav class="bottom-nav d-md-none" aria-label="التنقل السفلي">
-      <div class="container d-flex justify-content-around align-items-center">
+      <div class="container d-flex justify-content-around align-items-center ">
         <a href="index.html" class="nav-item-bottom text-center text-decoration-none active" data-page="home">
           <i class="bi bi-house-door d-block"></i><i class="bi bi-house-door-fill d-block active-icon"></i><span>الرئيسية</span>
         </a>
