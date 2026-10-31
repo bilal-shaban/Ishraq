@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     quran: { label: "القرآن", icon: "bi-book-fill" },
     azkar: { label: "الأذكار", icon: "bi-moon-stars-fill" },
     awrad: { label: "الأوراد", icon: "bi-book-half" },
-    adiya: { label: "الأدعية", icon: "bi-hands-praying" }
+    adiya: { label: "الأدعية", icon: "bi-chat-heart" }
   };
 
   let activeFilter = "all";

@@ -5,21 +5,37 @@
 <meta name="robots" content="noindex">
 <title>تسجيل الحضور — المشرف</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
-<meta name="theme-color" content="#21211D">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;700;900&family=Reem+Kufi:wght@500;700&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#0b0b0c">
 <style>
-body{background:#21211d;font-family:'Tajawal',sans-serif}
-.box{background:#1b1b18;border:1px solid rgba(237,206,160,.25);border-radius:16px;padding:1.1rem}
-.gold{color:#edcea0}
-.u-in{background:#21211d!important;border:1px solid rgba(237,206,160,.3)!important;color:#f8f9fa!important}
-.btn-gold{background:#edcea0;color:#21211d;font-weight:700;border:0}
-.btn-gold:hover{background:#e3c088;color:#21211d}
-#reader{border-radius:14px;overflow:hidden}
-#res{min-height:120px;border-radius:14px;display:grid;place-items:center;text-align:center;padding:1rem;font-weight:700;font-size:1.3rem;background:#21211d;border:1px dashed rgba(237,206,160,.3);color:#d3d3c7}
-#res.ok{background:#14532d;border:0;color:#fff}
-#res.dup{background:#7a5b00;border:0;color:#fff}
-#res.bad{background:#7f1d1d;border:0;color:#fff}
+*{box-sizing:border-box}
+:root{--k:#0b0b0c;--c1:#131315;--c2:#1b1c1f;--c3:#2a2c30;--t:#ececec;--m:#8f9197;--a:#d6ac52;--a2:#edcea0}
+body{margin:0;min-height:100vh;font-family:Cairo,Tajawal,system-ui,sans-serif;color:var(--t);line-height:1.8;background:var(--k);
+ background-image:radial-gradient(900px 420px at 85% -80px,#d6ac5220,transparent 70%),radial-gradient(700px 380px at 5% 60%,#d6ac520e,transparent 70%);background-attachment:fixed;-webkit-tap-highlight-color:transparent}
+h1,h2,h3{font-family:"Reem Kufi",Cairo,sans-serif}
+.notch{clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,16px 100%,0 calc(100% - 16px))}
+
+main{position:relative}
+h1{font-size:1.5rem}
+.gold{color:var(--a2)}
+.box{position:relative;background:linear-gradient(180deg,var(--c2),var(--c1));padding:18px;
+ clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px))}
+.box::before{content:"";position:absolute;inset:0;border:1px solid var(--c3);pointer-events:none;clip-path:inherit}
+.u-in,.form-control,.form-select{background:var(--k)!important;border:1px solid var(--c3)!important;color:var(--t)!important;border-radius:0!important;min-height:48px;box-shadow:none!important}
+.u-in:focus{border-color:var(--a)!important}
+.btn{border-radius:0!important;font-weight:700}
+.btn-gold{background:linear-gradient(135deg,#edcea0,#d6ac52);color:#1c1405;font-weight:800;border:0;min-height:48px}
+.btn-gold:hover{filter:brightness(1.07);color:#1c1405}
+.btn-outline-light{border-color:var(--c3);color:var(--t);min-height:44px}
+.btn-outline-light:hover{border-color:var(--a);background:#d6ac5214;color:var(--a2)}
+#reader{overflow:hidden;border:1px solid var(--a);box-shadow:0 0 0 6px #d6ac5212}
+#res{min-height:130px;display:grid;place-items:center;text-align:center;padding:1rem;font-weight:700;font-size:1.25rem;background:var(--c1);border:1px dashed #d6ac5255;color:var(--m);transition:background .25s}
+#res.ok{background:#14532d;border:1px solid #4fae7a;color:#fff}
+#res.dup{background:#7a5b00;border:1px solid #d6ac52;color:#fff}
+#res.bad{background:#7f1d1d;border:1px solid #e06060;color:#fff}
 #res small{font-weight:400;opacity:.85}
+#cnt{font-family:"Reem Kufi",sans-serif;font-size:1.6rem;color:var(--a2)}
+#lst li{padding:4px 0;border-bottom:1px dashed var(--c3)}
 </style>
 </head>
 <body>
