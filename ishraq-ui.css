@@ -369,3 +369,136 @@ body.focus-reading-mode.ix .ix-player{bottom:16px}
 .ix .form-range::-webkit-slider-runnable-track{background:var(--c3);height:.35rem;border-radius:0}
 .ix .form-range::-moz-range-track{background:var(--c3);height:.35rem;border-radius:0}
 .ix .form-range:focus::-webkit-slider-thumb{box-shadow:0 0 0 6px #d6ac5240}
+
+/* =====================================================
+   وضع «ورقي فاتح» للقراءة بالنهار (قارئ السورة)
+   ===================================================== */
+html:has(body.ix.paper){background:#f4ecd8}
+body.ix.paper{
+  --k:#f4ecd8; --c1:#fbf6e8; --c2:#efe4cb; --c3:#d9c9a5;
+  --t:#2b2418; --m:#7a6a4d; --a:#9a7420; --a2:#6e5115;
+  background:#f4ecd8;
+  background-image:radial-gradient(900px 420px at 85% -80px,#fff8e6,transparent 70%),radial-gradient(700px 380px at 5% 40%,#e9dcbc66,transparent 70%);
+  color:var(--t)
+}
+.ix.paper .ix-top{background:#f4ecd8e8;border-bottom-color:var(--c3)}
+.ix.paper .ix-top .logo img{filter:brightness(.55) saturate(1.4)}
+.ix.paper .ix-ib{border-color:var(--c3);color:var(--t)}
+.ix.paper .ix-ib:hover{border-color:var(--a);color:var(--a)}
+.ix.paper .ix-stitle{color:var(--a2)}
+.ix.paper .reader-bar{background:#f4ecd8f2;border-bottom-color:var(--c3)}
+.ix.paper .form-select{background-repeat:no-repeat;background-position:left .75rem center;background-size:16px 12px;background-color:var(--c2);color:var(--a2);border-color:var(--c3);
+  background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%236e5115' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e")}
+.ix.paper .btn-gold-outline{border-color:var(--a);color:var(--a2)!important}
+.ix.paper .btn-gold-outline:hover{background:var(--a);color:#fff!important}
+.ix.paper .btn-gold-solid{color:#1c1405!important}
+.ix.paper .rb-font .fs{color:var(--a2)}
+.ix.paper .ayah-text,.ix.paper .mushaf-paragraph{color:#2b2418!important}
+.ix.paper .ayah-item{border-bottom-color:var(--c3)!important}
+.ix.paper .ayah-text .badge{border-color:#9a742099!important;color:var(--a2)!important}
+.ix.paper .ayah-item .btn{color:var(--m)!important}
+.ix.paper .ayah-item .btn:hover{color:var(--a2)!important;background:#9a742014}
+.ix.paper .ayah-item.active-ayah{background:linear-gradient(270deg,#9a742026,transparent 85%)}
+.ix.paper .mushaf-box .text-gold,.ix.paper #bismillah-container h3{color:var(--a2)!important}
+.ix.paper .mushaf-ayah-unit.active-ayah{background:#9a742033}
+.ix.paper .ix-player{background:#fbf6e8f7;border-color:#9a742066;box-shadow:0 14px 40px #6e51152e}
+.ix.paper .pl-top small,.ix.paper .pl-seek small,.ix.paper .pl-vol,.ix.paper .pl-who b{color:var(--a2)}
+.ix.paper .bottom-nav{background:#fbf6e8ee;border-color:#9a742055;box-shadow:0 14px 40px #6e51152e}
+.ix.paper .nav-item-bottom{color:var(--m)!important}
+.ix.paper .nav-item-bottom.active{color:var(--a2)!important}
+.ix.paper .nav-item-bottom.active .active-icon{color:var(--a)!important}
+.ix.paper .modal-content{background:var(--c1);border-color:#9a742055;color:var(--t)}
+.ix.paper .btn-close{filter:none}
+.ix.paper .ix-pn .btn-gold-outline{background:transparent}
+.ix.paper .spinner-border{color:var(--a)!important}
+
+/* =====================================================
+   الخطوة 4 · الأذكار / الأوراد / الأدعية / السبحة / المطوف
+   ===================================================== */
+/* ---- أدوات Bootstrap المظلمة القديمة ← ألوان النظام ---- */
+.ix .bg-dark,.ix .bg-card-dark,.ix .card{background-color:var(--c1)!important}
+.ix .bg-card-dark,.ix .card,.ix .border-gold-subtle{border-color:var(--c3)!important}
+.ix .card,.ix .bg-card-dark{border-radius:0!important;
+  clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px))}
+.ix .rounded-4,.ix .rounded-3{border-radius:0!important}
+.ix .form-control,.ix .form-select,.ix .input-group-text{background-color:var(--c2)!important;color:var(--t)!important;border:1px solid var(--c3)!important;border-radius:0!important;box-shadow:none!important}
+.ix .form-control:focus,.ix .form-select:focus{border-color:var(--a)!important}
+.ix .form-control::placeholder{color:var(--m)}
+.ix .input-group-text{color:var(--a2)!important}
+.ix .btn-gold-solid{background:linear-gradient(135deg,#edcea0,#d6ac52)!important;color:#1c1405!important;border:0;border-radius:0;font-weight:700}
+.ix .modal-content{background:var(--c1)!important;border:1px solid #d6ac5255!important;border-radius:0;color:var(--t)}
+.ix .modal-header,.ix .modal-footer,.ix .border-top,.ix .border-bottom{border-color:var(--c3)!important}
+.ix .btn-outline-light{border-radius:0;color:var(--m);--bs-btn-hover-bg:#ffffff10;--bs-btn-hover-color:var(--a2)}
+.ix .progress{background:var(--c3)!important;border-radius:0;height:6px!important}
+.ix .progress-bar.bg-gold{background:linear-gradient(90deg,#d6ac52,#edcea0)!important}
+.ix .text-light{color:var(--t)!important}
+.ix .supplication-box,.ix .supplication-box-1{background:var(--c2);border:1px solid var(--c3);border-radius:0!important;
+  clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px))}
+.ix .supplication-box-1:hover{transform:none;box-shadow:none;border-color:var(--a)}
+
+/* ---- شريط الفئات + الأدوات ---- */
+.ix .category-tabs{gap:8px!important;margin:6px -18px 14px!important;padding:0 18px 6px;mask-image:linear-gradient(90deg,transparent,#000 18px,#000 calc(100% - 18px),transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 18px,#000 calc(100% - 18px),transparent)}
+.ix .category-tabs .btn{border-radius:0!important;padding:7px 16px;font-size:.88rem;background:var(--c1)!important;border:1px solid var(--c3)!important;color:var(--m)!important;transition:.25s var(--ease)}
+.ix .category-tabs .btn:hover{color:var(--a2)!important;border-color:var(--a)!important}
+.ix .category-tabs .btn.active-tab,.ix .length-filter-btn.active-tab{background:linear-gradient(135deg,#edcea0,#d6ac52)!important;color:#1c1405!important;border-color:transparent!important;font-weight:700}
+.ix .length-filter-btn{border-radius:0!important;padding:5px 16px}
+.ix .zikr-progress-note{color:var(--a2);opacity:1;letter-spacing:.04em}
+.ix #font-decrease-btn,.ix #font-increase-btn{border-radius:0!important}
+
+/* ---- بطاقة الذكر ---- */
+.ix .zikr-card{position:relative;background:linear-gradient(180deg,var(--c2),var(--c1));border:0!important;padding:18px 16px 14px;margin-bottom:14px;
+  clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,16px 100%,0 calc(100% - 16px));transition:opacity .35s,transform .25s var(--ease)}
+.ix .zikr-card::before{content:"";position:absolute;inset:0;border:1px solid var(--c3);pointer-events:none;clip-path:inherit}
+.ix .zikr-card::after{content:"";position:absolute;top:0;right:0;width:3px;height:100%;background:linear-gradient(180deg,var(--a),transparent)}
+.ix .zikr-card.done{opacity:.45}
+.ix .zikr-card.done::after{background:#4fae7a}
+.ix .zikr-text{color:var(--t);font-family:"Amiri Quran",Amiri,serif;line-height:2.15}
+.ix .zikr-source{color:var(--a2)!important;opacity:.8}
+.ix .zikr-count-btn{width:52px;height:52px;border:1.5px solid var(--a);color:var(--a2);background:#d6ac520f;font-family:"Reem Kufi",Cairo,sans-serif;font-size:1.2rem;box-shadow:0 0 0 5px #d6ac5210}
+.ix .zikr-count-btn:active{transform:scale(.88);background:#d6ac5233}
+.ix .zikr-card.done .zikr-count-btn{background:#4fae7a;border-color:#4fae7a;color:#06140c;box-shadow:none}
+.ix .zikr-actions{border-top:1px dashed var(--c3);padding-top:8px;margin-top:4px}
+.ix .zikr-actions .btn{color:var(--m)!important;font-size:.78rem;opacity:1}
+.ix .zikr-actions .btn:hover{color:var(--a2)!important;background:#d6ac5212}
+.ix .zikr-actions .share-btn{color:#4fae7a!important}
+
+/* ---- دعاء اليوم ---- */
+.ix #daily-dua-box{background:linear-gradient(135deg,#d6ac5214,transparent 70%),var(--c2);border:1px solid #d6ac5255!important;position:relative}
+.ix #daily-dua-box .zikr-text{color:var(--t)}
+
+/* ---- السبحة ---- */
+.ix .counter-circle-container{width:240px!important;height:240px!important;position:relative}
+.ix .counter-circle-container::before{content:"";position:absolute;inset:-12px;border-radius:50%;border:1px dashed #d6ac5266;animation:ixSpin 40s linear infinite}
+@keyframes ixSpin{to{transform:rotate(360deg)}}
+.ix .counter-ring{border:2px solid var(--a)!important;background:radial-gradient(circle at 50% 35%,#24231f,#0e0e0f 75%)!important;box-shadow:0 0 0 8px #d6ac5212,0 18px 50px #0009,inset 0 0 40px #d6ac5214!important;transition:transform .08s,box-shadow .2s}
+.ix .counter-ring:active{transform:scale(.95);box-shadow:0 0 0 12px #d6ac5226,0 0 50px #d6ac5255,inset 0 0 40px #d6ac5226!important}
+.ix #counter-number{font-family:"Reem Kufi",Cairo,sans-serif;color:var(--a2)!important;text-shadow:0 0 24px #d6ac5266}
+.ix #dhikr-display-text{font-family:"Amiri Quran",Amiri,serif;font-size:1.7rem!important;color:var(--a2)!important;line-height:1.9}
+.ix .tasbeeh-bead{background:var(--c3)}
+.ix .tasbeeh-bead.active,.ix .tasbeeh-bead.filled,.ix .tasbeeh-bead.done{background:var(--a);box-shadow:0 0 8px #d6ac5299}
+.ix .weekly-chart .bar{background:#d6ac5233;border-radius:0}
+.ix .weekly-chart .bar.today{background:linear-gradient(180deg,#edcea0,#d6ac52)}
+.ix .asma-item{background:var(--c2);border:1px solid var(--c3);border-radius:0}
+.ix .asma-item:hover,.ix .asma-item:active{background:#d6ac5214;border-color:var(--a)}
+.ix .sound-picker .btn{border-radius:0}
+.ix .sound-picker .btn.active-sound{background:var(--a)!important;color:#1c1405!important}
+.ix .btn-link.gold{color:var(--a2)!important}
+
+/* ---- المطوف ---- */
+.ix .mode-btn{border-radius:0!important;border:1px solid var(--a);color:var(--a2);background:transparent;padding:6px 22px;font-weight:700}
+.ix .mode-btn.active,.ix .mode-btn:hover{background:linear-gradient(135deg,#edcea0,#d6ac52);color:#1c1405}
+.ix .mutawwif-card{background:linear-gradient(180deg,var(--c2),var(--c1))!important;border:1px solid var(--c3)!important;border-radius:0!important;
+  clip-path:polygon(0 0,calc(100% - 18px) 0,100% 18px,100% 100%,18px 100%,0 calc(100% - 18px));box-shadow:none!important}
+.ix .step-indicator{color:var(--m)}
+.ix .step-indicator.active{color:var(--a2)}
+.ix .badge-num{background:var(--c1);border-color:#d6ac5266;border-radius:50%}
+.ix .step-indicator.active .badge-num{background:var(--a);color:#1c1405}
+.ix #steps-container{scrollbar-width:none}
+.ix #steps-container::-webkit-scrollbar{display:none}
+.ix #history-list li{padding:6px 0;border-bottom:1px dashed var(--c3)}
+.ix #mutawwif-stage-content .supplication-box{margin-top:10px}
+.ix #btn-prev-stage{border-radius:0!important;border-color:var(--c3);color:var(--t)}
+.ix .btn-close-white,.ix .btn-close{filter:invert(1) grayscale(1) brightness(1.6)}
+.ix main .container{padding-left:18px;padding-right:18px}
+@media(prefers-reduced-motion:reduce){.ix .counter-circle-container::before{animation:none}}
+.ix #daily-dua-box{padding:16px 18px!important}

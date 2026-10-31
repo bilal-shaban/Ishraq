@@ -2,115 +2,38 @@
 <html lang="ar" dir="rtl" data-bs-theme="dark">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>إشراق - السبحة الإلكترونية</title>
-    <!-- Bootstrap 5.3.3 RTL CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css"
-    />
-    <!-- Bootstrap Icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-    />
-    <!-- Google Fonts (Tajawal) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <!-- ملف التصميم الرئيسي -->
-    <link rel="stylesheet" href="style.css" />
-    <!-- PWA Manifest -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Amiri+Quran&family=Cairo:wght@400;700;900&family=Reem+Kufi:wght@500;700&family=Tajawal:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./ishraq-ui.css" />
     <link rel="manifest" href="./manifest.json" />
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <meta name="theme-color" content="#21211D" />
+    <meta name="theme-color" content="#0b0b0c" />
   </head>
-  <body>
-    <!-- شريط التنقل العلوي (الناف بار الكامل مثل الصفحة الرئيسية) -->
-    <header>
-      <nav
-        class="navbar navbar-expand-lg fixed-top shadow-sm"
-        style="background-color: #21211d; border-bottom: 0.2rem solid #edcea0"
-      >
-        <div class="container-fluid">
-          <a class="navbar-brand ms-lg-3" href="./index.html">
-            <img
-              src="./5b862b4281f64fd884b11984846f0e97.png"
-              width="80"
-              alt="إشراق"
-            />
-          </a>
-          <div class="h6 gold text-center d-none d-lg-block my-auto">
-            نُشرِقُ برُوحِك.. ونَسْمُو بِقَلْبِك
-          </div>
-
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#collapsibleNavId"
-            aria-controls="collapsibleNavId"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-            style="border-color: #edcea0"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-
-          <div class="collapse navbar-collapse" id="collapsibleNavId">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link gold px-3 d-inline-block" href="./index.html"
-                  >الرئيسية</a
-                >
-              </li>
-              <li class="nav-item">
-                <a class="nav-link gold px-3 d-inline-block" href="./quran.html"
-                  >القرآن الكريم</a
-                >
-              </li>
-              <li class="nav-item">
-                <a class="nav-link gold px-3 d-inline-block" href="hadith.html"
-                  >الحديث النبوي</a
-                >
-              </li>
-              <li class="nav-item">
-                <a class="nav-link gold px-3 d-inline-block" href="./azkar.html"
-                  >الأذكار</a
-                >
-              </li>
-              <li class="nav-item">
-                <a class="nav-link gold px-3 d-inline-block" href="./awrad.html"
-                  >الأوراد</a
-                >
-              </li>
-              <li class="nav-item">
-                <a class="nav-link gold px-3 d-inline-block" href="./adiya.html"
-                  >الأدعية</a
-                >
-              </li>
-              <li class="nav-item">
-                <a
-                  class="nav-link gold px-3 d-inline-block"
-                  href="./matwaf.html"
-                  >المطوف
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+  <body class="ix">
+    <header class="ix-top">
+      <div class="ix-wrap in">
+        <a class="logo" href="./index.html" aria-label="إشراق"><img src="./5b862b4281f64fd884b11984846f0e97.png" alt="إشراق" /></a>
+        <nav class="ix-links" aria-label="التنقل الرئيسي"><a href="./index.html">الرئيسية</a><a href="./quran.html">القرآن</a><a href="./hadith.html">الحديث</a><a href="./azkar.html">الأذكار</a><a href="./awrad.html">الأوراد</a><a href="./adiya.html">الأدعية</a><a class="on" href="./tasbeeh.html">السبحة</a><a href="./matwaf.html">المطوف</a></nav>
+        <span class="sp"></span>
+        <a class="ix-ib" href="./favorites.html" aria-label="المفضلة" title="المفضلة"><i class="bi bi-star"></i></a>
+        <a class="ix-ib" href="./settings.html" aria-label="الإعدادات" title="الإعدادات"><i class="bi bi-gear"></i></a>
+      </div>
     </header>
+    <div class="ix-wrap"><section class="ix-qhead"><div class="ix-hello">TASBEEH</div><h1 class="ix-tag">السبحة <span class="ol">الإلكترونية</span></h1></section></div>
+
+    <!-- شريط التنقل العلوي (الناف بار الكامل مثل الصفحة الرئيسية) -->
 
     <!-- محتوى الصفحة مع إضافة مسافة علوية (margin-top) -->
-    <main style="margin-top: 130px" class="pb-5 mb-5">
+    <main class="pb-5 mb-5">
       <div class="container my-3" style="max-width: 500px">
         <!-- الهدف اليومي -->
         <div class="row justify-content-center">
-          <div class="col-11" data-aos="flip-left">
+          <div class="col-11">
             <div
               class="card bg-card-dark border-gold-subtle rounded-4 mb-3 shadow-sm"
             >
@@ -169,7 +92,7 @@
 
         <!-- صندوق اختيار الذكر -->
         <div class="row justify-content-center">
-          <div class="col-11" data-aos="flip-right">
+          <div class="col-11">
             <div
               class="card bg-card-dark border-gold-subtle mb-3 rounded-4 shadow-sm"
             >
@@ -225,7 +148,7 @@
         <!-- نص الذكر البارز -->
         <!-- دائرة التسبيح المركزية -->
         <div class="row justify-content-center">
-          <div class="col-12" data-aos="zoom-in">
+          <div class="col-12">
             <div class="text-center mb-3">
               <div
                 id="dhikr-display-text"
@@ -236,7 +159,7 @@
               </div>
             </div>
           </div>
-          <div class="col-12" data-aos="zoom-out">
+          <div class="col-12">
             <div class="text-center my-3">
               <div
                 class="counter-circle-container mx-auto position-relative d-flex justify-content-center align-items-center"
@@ -268,7 +191,7 @@
 
         <!-- خرزات المسبحة المرئية (33 خرزة) -->
         <div class="row justify-content-center">
-          <div class="col-11" data-aos="fade-up">
+          <div class="col-11">
             <div
               class="card bg-card-dark border-gold-subtle rounded-4 p-2 my-3"
             >
@@ -288,7 +211,7 @@
 
         <!-- إحصائيات سريعة (عدد الدورات والإجمالي التاريخي) -->
         <div class="row justify-content-center text-center mb-4">
-          <div class="col-6" data-aos="fade-up">
+          <div class="col-6">
             <div
               class="p-2 bg-card-dark border-gold-subtle rounded-3 shadow-sm"
             >
@@ -298,7 +221,7 @@
               <span id="rounds-counter" class="gold fw-bold fs-5">0</span>
             </div>
           </div>
-          <div class="col-6" data-aos="fade-up">
+          <div class="col-6">
             <div
               class="p-2 bg-card-dark border-gold-subtle rounded-3 shadow-sm"
             >
@@ -310,7 +233,7 @@
 
         <!-- الرسم البياني الأسبوعي -->
         <div class="row justify-content-center">
-          <div class="col-12" data-aos="fade-up">
+          <div class="col-12">
             <div
               class="card bg-card-dark border-gold-subtle rounded-4 mb-3 shadow-sm"
             >
@@ -326,7 +249,7 @@
 
         <!-- اختيار صوت النقر -->
         <div class="row justify-content-center">
-          <div class="col-11" data-aos="fade-up">
+          <div class="col-11">
             <div
               class="card bg-card-dark border-gold-subtle rounded-4 p-2 my-3"
             >
@@ -362,7 +285,7 @@
 
         <!-- أزرار التحكم (تصفير ومشاركة الأجر) -->
         <div class="row justify-content-center gap-0 mt-3">
-          <div class="col-4" data-aos="zoom-in">
+          <div class="col-4">
             <button
               onclick="resetCounter()"
               class="btn btn-outline-danger btn-sm rounded-pill px-3 py-2"
@@ -370,7 +293,7 @@
               <i class="bi bi-arrow-counterclockwise me-1"></i> تصفير الدورة
             </button>
           </div>
-          <div class="col-4" data-aos="zoom-in">
+          <div class="col-4">
             <button
               onclick="shareProgress()"
               class="btn btn-sm rounded-pill px-3 py-2"
@@ -383,7 +306,7 @@
               <i class="bi bi-whatsapp me-1"></i> مشاركة الأجر
             </button>
           </div>
-          <div class="col-4" data-aos="zoom-in">
+          <div class="col-4">
             <button
               onclick="shareTodayChallenge()"
               class="btn btn-sm rounded-pill px-3 py-2"
@@ -461,78 +384,20 @@
     </div>
 
     <!-- شريط التنقل السفلي الثابت للهواتف -->
-    <nav class="bottom-nav fixed-bottom d-md-none">
-      <div
-        class="container d-flex justify-content-around align-items-center py-2"
-      >
-        <!-- زر الرئيسية -->
-        <a
-          href="index.html"
-          class="nav-item-bottom text-center text-decoration-none"
-          data-page="home"
-        >
-          <i class="bi bi-house-door fs-5 d-block"></i>
-          <i class="bi bi-house-door-fill fs-5 d-block active-icon"></i>
-          <span class="small">الرئيسية</span>
-        </a>
-
-        <!-- زر السبحة -->
-        <a
-          href="tasbeeh.html"
-          class="nav-item-bottom text-center text-decoration-none active"
-          data-page="tasbeeh"
-        >
-          <i class="bi bi-circle fs-5 d-block"></i>
-          <i class="bi bi-record-circle-fill fs-5 d-block active-icon"></i>
-          <span class="small">السبحة</span>
-        </a>
-
-        <!-- زر البوصلة -->
-        <a
-          href="qibla.html"
-          class="nav-item-bottom text-center text-decoration-none"
-          data-page="qibla"
-        >
-          <i class="bi bi-compass fs-5 d-block"></i>
-          <i class="bi bi-compass-fill fs-5 d-block active-icon"></i>
-          <span class="small">القبلة</span>
-        </a>
-
-        <!-- زر المطوف -->
-        <!-- زر المطوف (باستخدام أيقونة تعبر عن السعي والحركة) -->
-        <a
-          href="matwaf.html"
-          class="nav-item-bottom text-center text-decoration-none"
-          data-page="matwaf"
-        >
-          <i class="bi bi-person-walking fs-5 d-block"></i>
-          <i class="bi bi-person-walking fs-5 d-block active-icon"></i>
-          <span class="small">المطوف</span>
-        </a>
-
-        <!-- زر الإعدادات -->
-        <a
-          href="settings.html"
-          class="nav-item-bottom text-center text-decoration-none"
-          data-page="settings"
-        >
-          <i class="bi bi-gear fs-5 d-block"></i>
-          <i class="bi bi-gear-fill fs-5 d-block active-icon"></i>
-          <span class="small">الإعدادات</span>
-        </a>
+    <nav class="bottom-nav d-md-none" aria-label="التنقل السفلي">
+      <div class="container d-flex justify-content-around align-items-center">
+        <a href="index.html" class="nav-item-bottom text-center text-decoration-none" data-page="home"><i class="bi bi-house-door d-block"></i><i class="bi bi-house-door-fill d-block active-icon"></i><span>الرئيسية</span></a>
+        <a href="quran.html" class="nav-item-bottom text-center text-decoration-none" data-page="quran"><i class="bi bi-book d-block"></i><i class="bi bi-book-fill d-block active-icon"></i><span>القرآن</span></a>
+        <a href="tasbeeh.html" class="nav-item-bottom text-center text-decoration-none active" data-page="tasbeeh"><i class="bi bi-circle d-block"></i><i class="bi bi-record-circle-fill d-block active-icon"></i><span>السبحة</span></a>
+        <a href="qibla.html" class="nav-item-bottom text-center text-decoration-none" data-page="qibla"><i class="bi bi-compass d-block"></i><i class="bi bi-compass-fill d-block active-icon"></i><span>القبلة</span></a>
+        <a href="matwaf.html" class="nav-item-bottom text-center text-decoration-none" data-page="matwaf"><i class="bi bi-person-walking d-block"></i><i class="bi bi-person-walking d-block active-icon"></i><span>المطوف</span></a>
       </div>
     </nav>
 
     <!-- JavaScript الخاص بالصفحة -->
     <script src="tasbeeh.js"></script>
     <script src="./main.js"></script>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-      AOS.init({
-        duration: 1250, // مدة الحركة بالمللي ثانية
-        once: false,
-      });
-    </script>
+    <script src="./ishraq-ui.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

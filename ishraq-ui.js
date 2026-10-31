@@ -41,3 +41,21 @@
     },{passive:true});
   }
 })();
+
+/* وضع القراءة «ورقي فاتح» (قارئ السورة) */
+(function(){
+  var btn=document.getElementById("ix-theme-btn");
+  if(!btn||!document.body.classList.contains("reader"))return;
+  var meta=document.querySelector('meta[name="theme-color"]');
+  function paint(){
+    var paper=document.body.classList.contains("paper");
+    btn.innerHTML=paper?'<i class="bi bi-moon-stars"></i> الوضع الداكن':'<i class="bi bi-sun"></i> الوضع الورقي';
+    if(meta)meta.setAttribute("content",paper?"#f4ecd8":"#0b0b0c");
+  }
+  btn.addEventListener("click",function(){
+    var paper=document.body.classList.toggle("paper");
+    try{localStorage.setItem("ix_reader_theme",paper?"paper":"dark");}catch(e){}
+    paint();
+  });
+  paint();
+})();

@@ -15,6 +15,7 @@
     <meta name="theme-color" content="#0b0b0c" />
   </head>
   <body class="ix reader">
+    <script>try{if(localStorage.getItem('ix_reader_theme')==='paper')document.body.classList.add('paper')}catch(e){}</script>
     <header class="ix-top">
       <div class="ix-wrap in">
         <a class="ix-ib" href="./quran.html" aria-label="العودة للسور" title="العودة للسور"><i class="bi bi-chevron-right"></i></a>
@@ -35,6 +36,7 @@
         </div>
         <div class="collapse" id="display-options-panel">
           <div class="rb-opts">
+            <button id="ix-theme-btn" class="btn btn-gold-outline btn-sm" type="button" title="تبديل خلفية القراءة"><i class="bi bi-sun"></i> الوضع الورقي</button>
             <button id="toggle-layout-btn" class="btn btn-gold-outline btn-sm"><i class="bi bi-book"></i> شكل المصحف الشريف</button>
             <button id="auto-advance-btn" class="btn btn-gold-outline btn-sm" title="تشغيل تلقائي متسلسل للسورة التالية"><i class="bi bi-skip-forward"></i> تشغيل تلقائي: متوقف</button>
             <a id="download-audio-link" href="#" download class="btn btn-gold-outline btn-sm d-none" title="تنزيل الصوت للاستماع بدون إنترنت"><i class="bi bi-download"></i> تنزيل الصوت</a>
