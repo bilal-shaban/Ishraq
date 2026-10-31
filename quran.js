@@ -67,73 +67,20 @@ function displaySurahs(surahs) {
      
 
       return `
-
         <div class="col-12 col-md-6 col-lg-4">
-
-          <div class="card bg-dark border-gold h-100 p-3 shadow-sm position-relative overflow-hidden" style="border: 1px solid #edcea0;background-color: #21211D !important;  border-radius: 12px; transition: transform 0.2s;">
-
-           
-
-            <!-- استخدام Flexbox لتوزيع العناصر أقصى اليمين وأقصى اليسار -->
-
-            <div class="d-flex justify-content-between align-items-center w-100">
-
-             
-
-              <!-- القسم الأيمن: أقصى اليمين تماماً -->
-
-              <div class="text-end">
-
-                <h4 class="gold fw-bold mb-1" style="color: #edcea0; font-family: 'Amiri', 'Traditional Arabic', serif; font-size: 1.5rem;">
-
-                  ${surah.name}
-
-                </h4>
-
-                <span class="d-block text-light opacity-75 small">${surah.numberOfAyahs} آيات</span>
-
-              </div>
-
-
-
-              <!-- القسم الأيسر: أقصى اليسار تماماً -->
-
-              <div class="text-start ps-2" style="border-right: 1px solid rgba(237, 206, 160, 0.2); padding-right: 12px;">
-
-                <span class="badge mb-1" style="background-color: rgba(237, 206, 160,.15); color: #edcea0; font-size: 0.7rem;">
-
-                  رقم ${surah.number} | ${revelationType}
-
-                </span>
-
-                <h6 class="text-light fw-bold mb-0 text-truncate" style="font-size: 0.95rem;">${surah.englishName}</h6>
-
-                <p class="text-light opacity-50 small mb-0 text-truncate" style="font-size: 0.75rem;">${surah.englishNameTranslation}</p>
-
-              </div>
-
-
-
-            </div>
-
-           
-
-            <!-- زر الانتقال لقراءة السورة -->
-
-            <div class="mt-3 pt-2 border-top border-gold-subtle text-center">
-
-              <a href="surah-reader.html?surah=${surah.number}" class="btn btn-sm w-100 py-1" style="border: 1px solid #edcea0; color: #edcea0; background-color: rgba(237, 206, 160, 0.05);">
-
-                <i class="bi bi-book-half me-1"></i> قراءة السورة
-
-              </a>
-
-            </div>
-
-          </div>
-
+          <a class="ix-surah" href="surah-reader.html?surah=${surah.number}" aria-label="قراءة سورة ${surah.name}">
+            <span class="no"><b>${surah.number}</b></span>
+            <span class="nm">
+              <strong>${surah.name}</strong>
+              <small>${surah.numberOfAyahs} آيات · ${revelationType}</small>
+            </span>
+            <span class="en">
+              <b>${surah.englishName}</b>
+              <small>${surah.englishNameTranslation}</small>
+            </span>
+            <i class="bi bi-chevron-left go"></i>
+          </a>
         </div>
-
       `;
 
     }).join("");

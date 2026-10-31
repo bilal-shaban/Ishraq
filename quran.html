@@ -2,223 +2,72 @@
 <html lang="ar" dir="rtl" data-bs-theme="dark">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>إشراق - القرآن الكريم</title>
-    <!-- Bootstrap 5.3.3 RTL CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css"
-    />
-    <!-- Bootstrap Icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-    />
-    <!-- Google Fonts (Tajawal) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <!-- ملف التصميم الرئيسي -->
-    <link rel="stylesheet" href="style.css" />
-    <!-- PWA Manifest -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Amiri+Quran&family=Cairo:wght@400;700;900&family=Reem+Kufi:wght@500;700&family=Tajawal:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./ishraq-ui.css" />
     <link rel="manifest" href="./manifest.json" />
-    <meta name="theme-color" content="#21211D" />
+    <meta name="theme-color" content="#0b0b0c" />
   </head>
-  <body
-    style="
-      background-color: #1a1a16;
-      color: #f8f9fa;
-      font-family: &quot;Tajawal&quot;, sans-serif;
-    "
-  >
-    <!-- شريط التنقل العلوي (الناف بار الكامل) -->
-    <header>
-      <nav
-        class="navbar navbar-expand-lg fixed-top shadow-sm"
-        style="background-color: #21211d; border-bottom: 0.2rem solid #edcea0"
-      >
-        <div class="container-fluid">
-          <a class="navbar-brand ms-lg-3" href="./index.html">
-            <img
-              src="./5b862b4281f64fd884b11984846f0e97.png"
-              width="80"
-              alt="إشراق"
-            />
-          </a>
-          <div
-            class="h6 gold text-center d-none d-lg-block my-auto"
-            style="color: #edcea0"
-          >
-            نُشرِقُ برُوحِك.. ونَسْمُو بِقَلْبِك
-          </div>
-
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#collapsibleNavId"
-            aria-controls="collapsibleNavId"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-            style="border-color: #edcea0"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-
-          <div class="collapse navbar-collapse" id="collapsibleNavId">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a
-                  class="nav-link px-3 d-inline-block"
-                  style="color: #edcea0"
-                  href="./index.html"
-                  >الرئيسية</a
-                >
-              </li>
-              <li class="nav-item">
-                <a
-                  class="nav-link px-3 d-inline-block"
-                  style="color: #edcea0"
-                  href="./quran.html"
-                  >القرآن الكريم</a
-                >
-              </li>
-              <li class="nav-item">
-                <a
-                  class="nav-link px-3 d-inline-block"
-                  style="color: #edcea0"
-                  href="./hadith.html"
-                  >الحديث النبوي</a
-                >
-              </li>
-              <li class="nav-item">
-                <a
-                  class="nav-link px-3 d-inline-block"
-                  style="color: #edcea0"
-                  href="./azkar.html"
-                  >الأذكار</a
-                >
-              </li>
-              <li class="nav-item">
-                <a
-                  class="nav-link px-3 d-inline-block"
-                  style="color: #edcea0"
-                  href="./awrad.html"
-                  >الأوراد</a
-                >
-              </li>
-              <li class="nav-item">
-                <a
-                  class="nav-link px-3 d-inline-block"
-                  style="color: #edcea0"
-                  href="./adiya.html"
-                  >الأدعية</a
-                >
-              </li>
-              <li class="nav-item">
-                <a
-                  class="nav-link px-3 d-inline-block"
-                  style="color: #edcea0"
-                  href="./tasbeeh.html"
-                  >السبحة</a
-                >
-              </li>
-              <li class="nav-item">
-                <a
-                  class="nav-link px-3 d-inline-block"
-                  style="color: #edcea0"
-                  href="./matwaf.html"
-                  >المطوف</a
-                >
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+  <body class="ix">
+    <header class="ix-top">
+      <div class="ix-wrap in">
+        <a class="logo" href="./index.html" aria-label="إشراق"><img src="./5b862b4281f64fd884b11984846f0e97.png" alt="إشراق" /></a>
+        <nav class="ix-links" aria-label="التنقل الرئيسي"><a href="./index.html">الرئيسية</a><a class="on" href="./quran.html">القرآن</a><a href="./hadith.html">الحديث</a><a href="./azkar.html">الأذكار</a><a href="./awrad.html">الأوراد</a><a href="./adiya.html">الأدعية</a><a href="./tasbeeh.html">السبحة</a><a href="./matwaf.html">المطوف</a></nav>
+        <span class="sp"></span>
+        <a class="ix-ib" href="./favorites.html" aria-label="المفضلة" title="المفضلة"><i class="bi bi-star"></i></a>
+        <a class="ix-ib" href="./settings.html" aria-label="الإعدادات" title="الإعدادات"><i class="bi bi-gear"></i></a>
+      </div>
     </header>
 
-    <main>
-    <main style="margin-top: 140px; margin-bottom: 90px">
-      <div class="container">
-       
-        <!-- شريط البحث الفوري -->
-        <div class="row justify-content-center mb-3">
-          <div class="col-12 col-lg-">
-            <div class="input-group shadow-sm">
-              <span class="input-group-text bg-dark border-gold text-gold" style="border-color: #edcea0; background-color: #21211D !important; ">
-                <i class="bi bi-search"></i>
-              </span>
-              <input
-                type="text"
-                id="quran-search-input"
-                class="form-control bg-dark text-light border-gold"
-                style="border-color: #edcea0; background-color: #21211D !important; "
-                placeholder="ابحث عن اسم السورة..."
-              />
-              <button id="voice-search-btn" class="btn btn-gold-outline" type="button" title="بحث صوتي">
-                <i class="bi bi-mic-fill"></i>
-              </button>
-              <a href="./favorites.html" class="btn btn-gold-outline" title="المفضلة"><i class="bi bi-star-fill"></i></a>
+    <main class="ix-wrap">
+      <section class="ix-qhead">
+        <div class="ix-hello">AL-QURAN AL-KAREEM</div>
+        <h1 class="ix-tag">القرآن <span class="ol">الكريم</span></h1>
+      </section>
 
-            </div>
-          </div>
-          <div class="col-1">
-          
-          </div>
+      <!-- البحث -->
+      <div class="ix-search">
+        <i class="bi bi-search s"></i>
+        <input type="text" id="quran-search-input" placeholder="ابحث عن اسم السورة..." autocomplete="off" />
+        <button id="voice-search-btn" class="ix-ib" type="button" title="بحث صوتي" aria-label="بحث صوتي"><i class="bi bi-mic-fill"></i></button>
+      </div>
+
+      <!-- آخر السور المقروءة -->
+      <div class="ix-recent d-none" id="recent-surahs-row">
+        <div class="ix-lab"><i class="bi bi-clock-history"></i> آخر ما قرأت</div>
+        <div class="d-flex gap-2 flex-wrap" id="recent-surahs-list"></div>
+      </div>
+
+      <!-- متتبع الختمة -->
+      <div class="ix-card hl ix-khatmah">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <span class="ix-kicker mb-0"><i class="bi bi-graph-up"></i> متتبع الختمة</span>
+          <button class="btn btn-sm btn-gold-outline" data-bs-toggle="modal" data-bs-target="#bookmarks-modal"><i class="bi bi-bookmark-fill"></i> علاماتي المرجعية</button>
         </div>
+        <div class="progress mb-2"><div id="khatmah-progress-bar" class="progress-bar bg-gold" style="width: 0%"></div></div>
+        <div class="small" style="color:var(--m)" id="khatmah-status-text">ابدأ القراءة ليبدأ التتبع...</div>
+      </div>
 
-        <!-- آخر السور المقروءة -->
-        <div class="row justify-content-center mb-3 d-none" id="recent-surahs-row">
-          <div class="col-11 col-lg-8">
-            <div class="small text-light opacity-75 mb-2"><i class="bi bi-clock-history me-1"></i> آخر ما قرأت</div>
-            <div class="d-flex gap-2 flex-wrap" id="recent-surahs-list"></div>
-          </div>
-        </div>
+      <!-- طريقة الفهرسة -->
+      <div class="ix-seg">
+        <button id="index-by-surah-btn" class="btn btn-gold-solid btn-sm">حسب السورة</button>
+        <button id="index-by-juz-btn" class="btn btn-gold-outline btn-sm">حسب الجزء</button>
+      </div>
 
-        <!-- متتبع الختمة -->
-        <div class="row justify-content-center mb-3">
-          <div class="col-11 col-lg-8">
-            <div class="card bg-card-dark border-gold-subtle rounded-4 p-3">
-              <div class="d-flex justify-content-between align-items-center mb-2">
-                <small class="gold fw-bold"><i class="bi bi-graph-up me-1"></i> متتبع الختمة</small>
-                <button class="btn btn-sm btn-gold-outline" data-bs-toggle="modal" data-bs-target="#bookmarks-modal">
-                  <i class="bi bi-bookmark-fill"></i> علاماتي المرجعية
-                </button>
-              </div>
-              <div class="progress bg-secondary bg-opacity-25 mb-2" style="height: 8px;">
-                <div id="khatmah-progress-bar" class="progress-bar bg-gold" style="width: 0%;"></div>
-              </div>
-              <div class="small text-light opacity-75" id="khatmah-status-text">ابدأ القراءة ليبدأ التتبع...</div>
-            </div>
-          </div>
-        </div>
+      <div class="row g-2 mb-3 d-none" id="juz-container"></div>
 
-        <!-- تبديل طريقة الفهرسة -->
-        <div class="row justify-content-center mb-3">
-          <div class="col-11 col-lg-8 d-flex gap-2">
-            <button id="index-by-surah-btn" class="btn btn-gold-solid btn-sm flex-grow-1">حسب السورة</button>
-            <button id="index-by-juz-btn" class="btn btn-gold-outline btn-sm flex-grow-1">حسب الجزء</button>
-          </div>
-        </div>
-
-        <!-- فهرسة الأجزاء (مخفية افتراضياً) -->
-        <div class="row g-2 justify-content-center mb-3 d-none" id="juz-container"></div>
-
-        <!-- قائمة السور (تُعبأ ديناميكياً عبر الجافاسكريبت) -->
-        <div class="row g-3 justify-content-center" id="surahs-container">
-          <!-- سيتم حقن كروت السور هنا برمجياً لضمان خفة وسرعة التحميل -->
-          <div class="text-center text-light py-5">
-            <div class="spinner-border text-gold" role="status" style="color: #edcea0; ">
-              <span class="visually-hidden">جاري التحميل...</span>
-            </div>
-            <p class="mt-2 text-opacity-75">جاري جلب سور القرآن الكريم...</p>
-          </div>
+      <div class="row g-2" id="surahs-container">
+        <div class="text-center py-5" style="color:var(--m)">
+          <div class="spinner-border" role="status" style="color:var(--a)"><span class="visually-hidden">جاري التحميل...</span></div>
+          <p class="mt-2">جاري جلب سور القرآن الكريم...</p>
         </div>
       </div>
-    </main>
     </main>
 
     <!-- نافذة العلامات المرجعية -->
@@ -234,73 +83,20 @@
       </div>
     </div>
 
-    <!-- شريط التنقل السفلي الثابت للهواتف -->
-    <nav class="bottom-nav fixed-bottom d-md-none">
-      <div
-        class="container d-flex justify-content-around align-items-center py-2"
-      >
-        <!-- زر الرئيسية -->
-        <a
-          href="index.html"
-          class="nav-item-bottom text-center text-decoration-none"
-          data-page="home"
-        >
-          <i class="bi bi-house-door fs-5 d-block"></i>
-          <i class="bi bi-house-door-fill fs-5 d-block active-icon"></i>
-          <span class="small">الرئيسية</span>
-        </a>
-
-        <!-- زر السبحة -->
-        <a
-          href="tasbeeh.html"
-          class="nav-item-bottom text-center text-decoration-none"
-          data-page="tasbeeh"
-        >
-          <i class="bi bi-circle fs-5 d-block"></i>
-          <i class="bi bi-record-circle-fill fs-5 d-block active-icon"></i>
-          <span class="small">السبحة</span>
-        </a>
-
-        <!-- زر البوصلة -->
-        <a
-          href="qibla.html"
-          class="nav-item-bottom text-center text-decoration-none"
-          data-page="qibla"
-        >
-          <i class="bi bi-compass fs-5 d-block"></i>
-          <i class="bi bi-compass-fill fs-5 d-block active-icon"></i>
-          <span class="small">القبلة</span>
-        </a>
-
-        <!-- زر المطوف -->
-        <!-- زر المطوف (باستخدام أيقونة تعبر عن السعي والحركة) -->
-<a
-  href="matwaf.html"
-  class="nav-item-bottom text-center text-decoration-none"
-  data-page="matwaf"
->
-  <i class="bi bi-person-walking fs-5 d-block"></i>
-  <i class="bi bi-person-walking fs-5 d-block active-icon"></i>
-  <span class="small">المطوف</span>
-</a>
-
-        <!-- زر الإعدادات -->
-        <a
-          href="settings.html"
-          class="nav-item-bottom text-center text-decoration-none active"
-          data-page="settings"
-        >
-          <i class="bi bi-gear fs-5 d-block"></i>
-          <i class="bi bi-gear-fill fs-5 d-block active-icon"></i>
-          <span class="small">الإعدادات</span>
-        </a>
+    <nav class="bottom-nav d-md-none" aria-label="التنقل السفلي">
+      <div class="container d-flex justify-content-around align-items-center">
+        <a href="index.html" class="nav-item-bottom text-center text-decoration-none" data-page="home"><i class="bi bi-house-door d-block"></i><i class="bi bi-house-door-fill d-block active-icon"></i><span>الرئيسية</span></a>
+        <a href="quran.html" class="nav-item-bottom text-center text-decoration-none active" data-page="quran"><i class="bi bi-book d-block"></i><i class="bi bi-book-fill d-block active-icon"></i><span>القرآن</span></a>
+        <a href="tasbeeh.html" class="nav-item-bottom text-center text-decoration-none" data-page="tasbeeh"><i class="bi bi-circle d-block"></i><i class="bi bi-record-circle-fill d-block active-icon"></i><span>السبحة</span></a>
+        <a href="qibla.html" class="nav-item-bottom text-center text-decoration-none" data-page="qibla"><i class="bi bi-compass d-block"></i><i class="bi bi-compass-fill d-block active-icon"></i><span>القبلة</span></a>
+        <a href="matwaf.html" class="nav-item-bottom text-center text-decoration-none" data-page="matwaf"><i class="bi bi-person-walking d-block"></i><i class="bi bi-person-walking d-block active-icon"></i><span>المطوف</span></a>
       </div>
     </nav>
-
     <!-- JavaScript الخاص بالإعدادات -->
    
     <script src="./quran.js"></script>
     <script src="./main.js"></script>
+    <script src="./ishraq-ui.js"></script>
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   </body>
